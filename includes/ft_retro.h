@@ -19,4 +19,9 @@
 
 std::string		sgetl(std::string s);
 
+/* Sound functions: */
+void		loadSounds(void);
+void		playSound(int index);
+void		playBackground(void);
+
 #endif

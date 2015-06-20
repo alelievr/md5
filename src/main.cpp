@@ -6,7 +6,7 @@
 /*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 00:54:20 by alelievr          #+#    #+#             */
-/*   Updated: 2015/06/20 21:14:14 by blemee           ###   ########.fr       */
+/*   Updated: 2015/06/20 23:23:51 by alelievr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,12 @@ void	loop(GameStatus & gm)
 
 int		main(void)
 {
+	playBackground();
+	loadSounds();
 	PlayerShip	ps("player", 1, 1, 10, 10);
 	GameStatus	gs(ps, 0, 1);
+	gs.EndGame();
+	gs.PauseGame();
 	while (42)
 		loop(gs);
 }
