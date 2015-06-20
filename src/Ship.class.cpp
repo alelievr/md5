@@ -8,6 +8,8 @@ Ship::Ship(void)
 
 Ship::Ship(std::string a0, int a1, int a2, int a3, int a4) : _name(a0), _x(a1), _y(a2), _HP(a3), _MHP(a4)
 {
+	this->next = NULL;
+	this->prev = NULL;
 	this->direction = 0;
 	this->_index = genIndex();
 	this->display = true;
@@ -24,6 +26,39 @@ Ship::Ship(Ship const & src)
 Ship::~Ship(void)
 {
 	std::cout << "Destructor called" << std::endl;
+	if (this->getPrev != NULL)
+		this->setPrev(this->getNext);
+	if (this->getNext != NULL)
+		this->setNext(this->getNext);
+}
+
+void Ship::append( Ship* newShip ) {
+	if (this.getNext == NULL) {
+		this.setNext = newship;
+		newShip->setPrev(&this);
+	std::cout << "Appened to list" << std::endl;
+	} else
+		this.getNext.append(newShip);
+}
+
+Ship*	Ship::getNext( void ) {
+	return this->_next;
+}
+
+void	Ship::setNext( Ship* s ) {
+	this->_next = s;
+}
+
+Ship*	Ship::getPrev( void ) {
+	return this->_prev;
+}
+
+void	Ship::setPrev( Ship* s ) {
+	this->_prev = s;
+}
+
+void	Ship::takeDam( int d ) {
+	this->_HP -= d;
 }
 
 void	Ship::fire(void)
@@ -114,6 +149,26 @@ int	Ship::getIndex(void) const
 void	Ship::setIndex(int tmp)
 {
 	this->_index = tmp;
+}
+
+int	Ship::getHeight(void) const
+{
+	return (this->_height);
+}
+
+void	Ship::setHeight(int tmp)
+{
+	this->_height = tmp;
+}
+
+int	Ship::getWidth(void) const
+{
+	return (this->_widht);
+}
+
+void	Ship::setWidth(int tmp)
+{
+	this->_width = tmp;
 }
 
 void	Ship::setDisplay(bool sta)
