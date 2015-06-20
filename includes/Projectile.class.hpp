@@ -2,7 +2,7 @@
 # define PROJECTILE_HPP
 # include <iostream>
 # include <string>
-# include "ft_retro.h"
+# include "Ship.class.hpp"
 
 class		Projectile : public Ship
 {
@@ -15,7 +15,9 @@ class		Projectile : public Ship
 		~Projectile(void);
 
 		Projectile &	operator=(Projectile const & src);
+
 		char	c;
+		int		speed;
 };
 
 std::ostream &	operator<<(std::ostream & o, Projectile const & r);

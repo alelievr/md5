@@ -17,6 +17,7 @@ class		Ship
 		int	_index;
 
 	public:
+		Ship(void);
 		Ship(std::string a0, int a1, int a2, int a3, int a4);
 		Ship(const Ship & src);
 		~Ship(void);
