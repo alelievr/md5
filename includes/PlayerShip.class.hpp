@@ -2,7 +2,7 @@
 # define PLAYERSHIP_HPP
 # include "ft_retro.h"
 
-class		PlayerShip : Ship
+class		PlayerShip : public Ship
 {
 	public:
 		enum	e_keys {

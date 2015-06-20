@@ -5,6 +5,9 @@
 # define BIT_OFF(x, y) (x &= ~(1 << y))
 # define BIT_TEST(x, y) (((x & (1 << y)) == 0) ? 0 : 1)
 
+# define SOUND_LASER 0
+# define SOUND_EXPLOSION 1
+
 # include <iostream>
 # include <string>
 # include "Ship.class.hpp"

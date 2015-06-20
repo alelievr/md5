@@ -32,6 +32,14 @@ Ship::~Ship(void)
 		this->setNext(this->getNext());*/
 }
 
+int		Ship::getDam( void  ) const {
+	return this->_damage;
+}
+
+void		Ship::setDam( int d ) {
+	this->_damage = d;
+}
+
 void	Ship::takeDam( int d ) {
 	this->_HP -= d;
 }

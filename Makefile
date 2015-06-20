@@ -6,7 +6,7 @@
 #    By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/04/04 19:22:36 by alelievr          #+#    #+#              #
-#    Updated: 2015/06/20 15:16:50 by alelievr         ###   ########.fr        #
+#    Updated: 2015/06/20 18:02:48 by alelievr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRC			=	EnemyShip.class.cpp		\
 OBJDIR		=	obj
 
 #	Includes
-INCDIR		=	includes/
+INCDIR		=	includes/ ~/lib/
 
 #	Libraries
 LIBDIR		=	
@@ -103,6 +103,7 @@ all: $(NAME)
 
 #	Linking
 $(NAME): $(OBJ)
+	export DYLD_LIBRARY_PATH=~/lib/:$DYLD_LIBRARY_PATH
 	@$(call disp_title,Linking,$(LINK_COLOR_T));
 	@$(call exec_color, "\033[38;5;$(LINK_COLOR_T)m➤ \033[38;5;$(LINK_COLOR)m",\
 		$(CC), $(CFLAGS), $(OPTFLAGS), $(VLIBDIR), $(VLIB), -o, $(NAME), $(OBJ))

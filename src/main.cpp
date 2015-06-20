@@ -6,7 +6,7 @@
 /*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 00:54:20 by alelievr          #+#    #+#             */
-/*   Updated: 2015/06/20 18:09:36 by blemee           ###   ########.fr       */
+/*   Updated: 2015/06/20 21:14:14 by blemee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	loop(GameStatus & gm)
 {
 	Obstacle *	tmp;
 	Obstacle *	tmp2;
-	gm.AddObstacle(2, 2);
-	gm.AddObstacle(1, 5);
-	gm.AddObstacle(1, -1);
+	gm.obstacleList.append(new Obstacle(1, 2));
+	gm.obstacleList.append(new Obstacle(2, 2));
+	gm.obstacleList.append(new Obstacle(3, 2));
 	tmp = gm.obstacleList.getNext();
 	while (tmp)
 	{

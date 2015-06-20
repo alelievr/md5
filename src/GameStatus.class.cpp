@@ -1,13 +1,13 @@
 #include "GameStatus.class.hpp"
 
 
-GameStatus::GameStatus(PlayerShip a0, int a1, int a2) : _ship(a0), _difficulty(a1), _speed(a2)
+GameStatus::GameStatus(PlayerShip a0, int a1, int a2) : _difficulty(a1), _speed(a2), player(a0)
 {
 	std::cout << "Default constructor called" << std::endl;
 	this->_pause = true;
 	this->enemyList.setDisplay(false);
 	this->obstacleList.setDisplay(false);
-	this->ProjList.setDisplay(false);
+	this->projList.setDisplay(false);
 }
 
 /*GameStatus::GameStatus(GameStatus const & src)
@@ -31,43 +31,34 @@ void	GameStatus::EndGame(void)
 	
 }
 
-int	GameStatus::AddObstacle(int x, int y)
+void	GameStatus::Colision(void)
 {
-	Obstacle *	tmp;
+	Projectile *	tmpP;
+	EnemyShip *		tmpE;
 
-	tmp = new Obstacle(x, y);
-	obstacleList.append(tmp);
-	return tmp->getIndex();
-}
+	tmpP = this->projList.getNext();
+	while (tmpP)
+	{
+		tmpE = this->enemyList.getNext();
+		// EnemyShip colision:
+		while (tmpE)
+		{
+			if (tmpP->getX() >= tmpE->getX()
+					&& tmpP->getX() <= tmpE->getX() + tmpE->getWidth())
+				if (tmpP->getY() >= tmpE->getY()
+						&& tmpP->getY() <= tmpE->getY() + tmpE->getHeight())
+					tmpE->takeDam(tmpP->getDam());
+			tmpE = tmpE->next;
+		}
 
-void	GameStatus::DeleteObstacle(int index)
-{
-	(void)index;
-}
-
-int	GameStatus::AddEnemyShip(int x, int y) 
-{
-	(void)x;
-	(void)y;
-	return (0);
-}
-
-void	GameStatus::DeleteEnemyShip(int index) 
-{
-	(void)index;
-}
-
-int	GameStatus::AddProjectile(int x, int y, int dir) 
-{
-	(void)x;
-	(void)y;
-	(void)dir;
-	return (0);
-}
-
-void	GameStatus::DeleteProjectile(int index) 
-{
-	(void)index;
+		//PlayerShip colision:
+		if (tmpP->getX() >= this->player.getX()
+				&& tmpP->getX() <= this->player.getX() + this->player.getWidth())
+			if (tmpP->getY() >= this->player.getY()
+					&& tmpP->getY() <= this->player.getY() + this->player.getHeight())
+				this->player.takeDam(tmpP->getDam());
+		tmpP = tmpP->getNext();
+	}
 }
 
 GameStatus &	GameStatus::operator=(GameStatus const & src)
@@ -75,25 +66,25 @@ GameStatus &	GameStatus::operator=(GameStatus const & src)
 	std::cout << "Assignment operator called" << std::endl;
 
 	if (this != &src) {
-		this->_ship = src.getShip();
+		this->player = src.getShip();
 		this->_difficulty = src.getDifficulty();
 		this->_speed = src.getSpeed();
 		this->_pause = src.getPause();
 		this->enemyList = src.enemyList;
 		this->obstacleList = src.obstacleList;
-		this->ProjList = src.ProjList;
+		this->projList = src.projList;
 	}
 	return (*this);
 }
 
 PlayerShip	GameStatus::getShip(void) const
 {
-	return (this->_ship);
+	return (this->player);
 }
 
 void	GameStatus::setShip(PlayerShip tmp)
 {
-	this->_ship = tmp;
+	this->player = tmp;
 }
 
 int	GameStatus::getDifficulty(void) const
