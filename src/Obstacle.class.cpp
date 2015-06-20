@@ -2,7 +2,7 @@
 
 Obstacle::Obstacle(void)
 {
-	this->display = false;
+	this->setDisplay(false);
 	Obstacle(0, 0);
 }
 

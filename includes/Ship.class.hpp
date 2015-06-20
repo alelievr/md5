@@ -14,7 +14,7 @@ class		Ship
 		int	_index;
 		bool	_display;
 		int		_damage;
-		int		__height;
+		int		_height;
 		int		_width;
 		Ship*	_next;
 		Ship*	_prev;
@@ -73,7 +73,7 @@ class		Ship
 
 		void	setDisplay(bool status);
 
-		void	append(Ship*)
+		void	append(Ship*);
 
 		int	genIndex(void);
 };
