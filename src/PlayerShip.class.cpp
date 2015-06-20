@@ -2,6 +2,7 @@
 
 PlayerShip::PlayerShip(std::string name, int x, int y, int  hp , int maxhp) : Ship(name, x, y, hp, maxhp)
 {
+	this->direction = 1;
 	std::cout << "playership constructed" << std::endl;
 }
 

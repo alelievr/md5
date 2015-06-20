@@ -1,5 +1,7 @@
 #ifndef GAMESTATUS_HPP
 # define GAMESTATUS_HPP
+# include <iostream>
+# include <string>
 # include "ft_retro.h"
 
 class		GameStatus
@@ -9,17 +11,33 @@ class		GameStatus
 		int	_difficulty;
 		int	_speed;
 		bool	_pause;
-		EnemyShip *	_enemyList;
-		Obstacle *	_obstacleList;
 
 
 	public:
 		GameStatus(PlayerShip a0, int a1, int a2);
+		GameStatus(const GameStatus&);
 		~GameStatus(void);
+
+		GameStatus &	operator=(GameStatus const & src);
+		EnemyShip	enemyList;
+		Obstacle	obstacleList;
+		Projectile	ProjList;
 
 		void	PauseGame(void);
 
 		void	EndGame(void);
+
+		int	AddObstacle(int x, int y);
+
+		void	DeleteObstacle(int index);
+
+		int	AddEnemyShip(int x, int y);
+
+		void	DeleteEnemyShip(int index);
+
+		int	AddProjectile(int x, int y, int dir);
+
+		void	DeleteProjectile(int index);
 
 		PlayerShip	getShip(void) const;
 		void	setShip(PlayerShip tmp);
@@ -32,14 +50,8 @@ class		GameStatus
 		
 		bool	getPause(void) const;
 		void	setPause(bool tmp);
-		
-		EnemyShip *	getEnemyList(void) const;
-		void	setEnemyList(EnemyShip * tmp);
-		
-		Obstacle *	getObstacleList(void) const;
-		void	setObstacleList(Obstacle * tmp);
 };
 
-//std::ostream &	operator<<(std::ostream & o, GameStatus const & r);
+std::ostream &	operator<<(std::ostream & o, GameStatus const & r);
 
 #endif

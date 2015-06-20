@@ -6,7 +6,7 @@
 #    By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/04/04 19:22:36 by alelievr          #+#    #+#              #
-#    Updated: 2015/06/20 02:45:14 by alelievr         ###   ########.fr        #
+#    Updated: 2015/06/20 13:09:12 by alelievr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC			=	EnemyShip.class.cpp		\
 				Obstacle.class.cpp		\
 				PlayerShip.class.cpp	\
 				Ship.class.cpp			\
+				Projectile.cpp			\
 				main.cpp				\
 
 #	Objects
@@ -41,7 +42,7 @@ CFLAGS		=	-Werror -Wall -Wextra -g
 CC			=	clang++
 
 #	Optimization
-OPTFLAGS	=	-funroll-loops -O3 -pipe
+OPTFLAGS	=	-funroll-loops -Ofast -pipe
 
 ################
 ##   COLORS   ##

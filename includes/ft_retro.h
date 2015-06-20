@@ -11,6 +11,7 @@
 # include "PlayerShip.class.hpp"
 # include "EnemyShip.class.hpp"
 # include "Obstacle.class.hpp"
+# include "Projectile.class.hpp"
 # include "GameStatus.class.hpp"
 
 std::string		sgetl(std::string s);
