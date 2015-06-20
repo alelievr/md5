@@ -36,7 +36,7 @@ int	GameStatus::AddObstacle(int x, int y)
 	Obstacle *	tmp;
 	Obstacle *	tmp2;
 
-	tmp = this->obstacleList;
+	tmp = this->obstacleList.next;
 	if (tmp != NULL)
 	{
 		while (tmp->next)
@@ -49,7 +49,7 @@ int	GameStatus::AddObstacle(int x, int y)
 		tmp = new Obstacle(x, y);
 		tmp->next = NULL;
 		tmp->prev = NULL;
-		this->obstacleList = tmp;
+		this->obstacleList.next = tmp;
 		return (tmp->getIndex());
 	}
 }

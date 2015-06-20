@@ -6,7 +6,7 @@
 #    By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/04/04 19:22:36 by alelievr          #+#    #+#              #
-#    Updated: 2015/06/20 13:09:12 by alelievr         ###   ########.fr        #
+#    Updated: 2015/06/20 15:16:50 by alelievr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC			=	EnemyShip.class.cpp		\
 				Obstacle.class.cpp		\
 				PlayerShip.class.cpp	\
 				Ship.class.cpp			\
-				Projectile.cpp			\
+				Projectile.class.cpp	\
 				main.cpp				\
 
 #	Objects

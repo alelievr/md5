@@ -8,7 +8,7 @@ Projectile::Projectile(void) : Ship("Projectile", 0, 0, 50000, 50000)
 Projectile::Projectile(int a0, int a1, int a2, char a3) : Ship("Projectile", a0, a1, 500000, 500000)
 {
 	this->direction = a2;
-	this->character = a3;
+	this->c = a3;
 	this->speed = 0;
 	std::cout << "Default constructor called" << std::endl;
 }
@@ -29,8 +29,8 @@ Projectile &	Projectile::operator=(Projectile const & src)
 	std::cout << "Assignment operator called" << std::endl;
 
 	if (this != &src) {
-		this->x = src.x;
-		this->y = src.y;
+		this->setX(src.getX());
+		this->setY(src.getY());
 		this->speed = src.speed;
 		this->direction = src.direction;
 		this->c = src.c;
