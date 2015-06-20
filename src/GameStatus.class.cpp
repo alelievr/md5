@@ -31,57 +31,34 @@ void	GameStatus::EndGame(void)
 	
 }
 
-int	GameStatus::AddObstacle(int x, int y) 
+void	GameStatus::Colision(void)
 {
-	Obstacle *	tmp;
-	Obstacle *	tmp2;
+	Projectile *	tmpP;
+	EnemyShip *		tmpE;
 
-	tmp = this->obstacleList.next;
-	if (tmp != NULL)
+	tmpP = this->enemyList.next;
+	while (tmpP)
 	{
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp2 = new Obstacle(x, y);
-		tmp->next = tmp2;
-		tmp2->prev = tmp;
-		return (tmp2->getIndex());
-	} else {
-		tmp = new Obstacle(x, y);
-		tmp->next = NULL;
-		tmp->prev = NULL;
-		this->obstacleList.next = tmp;
-		return (tmp->getIndex());
+		tmpE = this->projList.next;
+		// EnemyShip colision:
+		while (tmpE)
+		{
+			if (tmpP.getX() >= tmpE.getX()
+					&& tmpP.getX <= tmpE.getX() + tmpE.getWidth())
+				if (tmpP.getY() >= tmpE.getY()
+						&& tmpP.getY <= tmpE.getY() + tmpE.getHeight())
+					tmpE.takeDam(tmpP.getDam());
+			tmpE = tmpE->next;
+		}
+
+		//PlayerShip colision:
+		if (tmpP.getX() >= this->_ship.getX()
+				&& tmpP.getX() <= this->_ship.getX() + this->_ship.getWidth())
+			if (tmpP.getY() >= this->_ship.getY()
+					&& tmpP.getY() <= this->_ship.getY() + this->_ship.getHeight())
+				this->_ship.takeDam(tmpP.getDam());
+		tmpP = tmpP->next;
 	}
-}
-
-void	GameStatus::DeleteObstacle(int index) 
-{
-	(void)index;
-}
-
-int	GameStatus::AddEnemyShip(int x, int y) 
-{
-	(void)x;
-	(void)y;
-	return (0);
-}
-
-void	GameStatus::DeleteEnemyShip(int index) 
-{
-	(void)index;
-}
-
-int	GameStatus::AddProjectile(int x, int y, int dir) 
-{
-	(void)x;
-	(void)y;
-	(void)dir;
-	return (0);
-}
-
-void	GameStatus::DeleteProjectile(int index) 
-{
-	(void)index;
 }
 
 GameStatus &	GameStatus::operator=(GameStatus const & src)

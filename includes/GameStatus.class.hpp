@@ -18,26 +18,16 @@ class		GameStatus
 		GameStatus(const GameStatus&);
 		~GameStatus(void);
 
-		GameStatus &	operator=(GameStatus const & src);
+		GameStatus &	operator=(GameStatus const &);
 		EnemyShip	enemyList;
 		Obstacle	obstacleList;
-		Projectile	ProjList;
+		Projectile	projList;
+
+		void	Colisition(void);
 
 		void	PauseGame(void);
 
 		void	EndGame(void);
-
-		int	AddObstacle(int x, int y);
-
-		void	DeleteObstacle(int index);
-
-		int	AddEnemyShip(int x, int y);
-
-		void	DeleteEnemyShip(int index);
-
-		int	AddProjectile(int x, int y, int dir);
-
-		void	DeleteProjectile(int index);
 
 		PlayerShip	getShip(void) const;
 		void	setShip(PlayerShip tmp);
