@@ -4,6 +4,8 @@
 class		EnemyShip : public Ship
 {
 	private:
+		EnemyShip* _next;
+		EnemyShip* _prev;
 
 	public:
 		EnemyShip(void);
@@ -16,6 +18,13 @@ class		EnemyShip : public Ship
 		void		fire(void);
 		void		die(void);
 		void		move(int x, int y);
+		EnemyShip*   getNext(void) const;
+		void    setNext(EnemyShip*);
+
+		EnemyShip*   getPrev(void) const;
+		void    setPrev(EnemyShip*);
+
+		void    append(EnemyShip*);
 };
 
 #endif

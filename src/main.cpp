@@ -6,7 +6,7 @@
 /*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 00:54:20 by alelievr          #+#    #+#             */
-/*   Updated: 2015/06/20 15:26:21 by alelievr         ###   ########.fr       */
+/*   Updated: 2015/06/20 18:09:36 by blemee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,18 @@ void	loop(GameStatus & gm)
 	gm.AddObstacle(2, 2);
 	gm.AddObstacle(1, 5);
 	gm.AddObstacle(1, -1);
-	tmp = gm.obstacleList.next;
+	tmp = gm.obstacleList.getNext();
 	while (tmp)
 	{
 		std::cout << "o in " << tmp->getX() << "/" << tmp->getY() << std::endl;
 		tmp2 = tmp;
-		tmp = tmp->next;
+		tmp = tmp->getNext();
 	}
 	tmp = tmp2;
 	while (tmp)
 	{
 		std::cout << "o in " << tmp->getX() << "/" << tmp->getY() << std::endl;
-		tmp = tmp->prev;
+		tmp = tmp->getPrev();
 	}
 	exit(0);
 }

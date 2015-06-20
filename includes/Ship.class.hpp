@@ -16,11 +16,11 @@ class		Ship
 		int		_damage;
 		int		_height;
 		int		_width;
-		Ship*	_next;
-		Ship*	_prev;
 
 	protected:
 		std::string data;
+		Ship*	_next;
+		Ship*	_prev;
 
 	public:
 		Ship(void);
@@ -54,11 +54,6 @@ class		Ship
 		int	getIndex(void) const;
 		void	setIndex(int i);
 
-		Ship*	getNext(void) const;
-		void	setNext(Ship*);
-
-		Ship*	getPrev(void) const;
-		void	setPrev(Ship* s);
 
 		int	getDam(void) const;
 		void	setDam(int);
@@ -73,7 +68,6 @@ class		Ship
 
 		void	setDisplay(bool status);
 
-		void	append(Ship*);
 
 		int	genIndex(void);
 };
@@ -81,3 +75,12 @@ class		Ship
 std::ostream &	operator<<(std::ostream & o, Ship const & r);
 
 #endif
+/*
+		Ship*	getNext(void) const;
+		void	setNext(Ship*);
+
+		Ship*	getPrev(void) const;
+		void	setPrev(Ship*);
+
+		void	append(Ship*);
+		*/

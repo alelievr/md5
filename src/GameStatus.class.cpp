@@ -31,30 +31,16 @@ void	GameStatus::EndGame(void)
 	
 }
 
-int	GameStatus::AddObstacle(int x, int y) 
+int	GameStatus::AddObstacle(int x, int y)
 {
 	Obstacle *	tmp;
-	Obstacle *	tmp2;
 
-	tmp = this->obstacleList.next;
-	if (tmp != NULL)
-	{
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp2 = new Obstacle(x, y);
-		tmp->next = tmp2;
-		tmp2->prev = tmp;
-		return (tmp2->getIndex());
-	} else {
-		tmp = new Obstacle(x, y);
-		tmp->next = NULL;
-		tmp->prev = NULL;
-		this->obstacleList.next = tmp;
-		return (tmp->getIndex());
-	}
+	tmp = new Obstacle(x, y);
+	obstacleList.append(tmp);
+	return tmp->getIndex();
 }
 
-void	GameStatus::DeleteObstacle(int index) 
+void	GameStatus::DeleteObstacle(int index)
 {
 	(void)index;
 }

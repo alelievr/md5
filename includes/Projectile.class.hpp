@@ -7,6 +7,8 @@
 class		Projectile : public Ship
 {
 	private:
+		Projectile* _next;
+		Projectile* _prev;
 
 	public:
 		Projectile(void);
@@ -18,6 +20,13 @@ class		Projectile : public Ship
 
 		char	c;
 		int		speed;
+		Projectile*   getNext(void) const;
+		void    setNext(Projectile*);
+
+		Projectile*   getPrev(void) const;
+		void    setPrev(Projectile*);
+
+		void    append(Projectile*);
 };
 
 std::ostream &	operator<<(std::ostream & o, Projectile const & r);

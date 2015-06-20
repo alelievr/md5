@@ -4,6 +4,8 @@
 class	Obstacle : public Ship
 {
 	private:
+		Obstacle* _next;
+		Obstacle* _prev;
 
 	public:
 		Obstacle(void);
@@ -16,6 +18,14 @@ class	Obstacle : public Ship
 		void		fire(void);
 		void		die(void);
 		void		move(int x, int y);
+
+		Obstacle*   getNext(void) const;
+		void    setNext(Obstacle*);
+
+		Obstacle*   getPrev(void) const;
+		void    setPrev(Obstacle*);
+
+		void    append(Obstacle*);
 };
 
 #endif
