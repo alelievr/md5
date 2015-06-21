@@ -6,7 +6,7 @@
 /*   By: blemee <blemee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/21 01:35:41 by blemee            #+#    #+#             */
-/*   Updated: 2015/06/21 04:04:43 by blemee           ###   ########.fr       */
+/*   Updated: 2015/06/21 04:34:12 by blemee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@ static void	display_mask(int x, int y, std::string mask) {
 
 int		display(GameStatus& gs ) {
 	Obstacle* tmpO;
-
-	gs.obstacleList.append(new Obstacle(1, 2));
-	gs.obstacleList.append(new Obstacle(2, 2));
+	EnemyShip* tmpE;
+	Projectile* tmpP;
 
 	erase();
 
@@ -28,6 +27,19 @@ int		display(GameStatus& gs ) {
 	while ((tmpO = tmpO->getNext())) {
 		display_mask(tmpO->getX(), tmpO->getY(), "O");//tmp0->getMask());
 	}
+
+	tmpE = &gs.enemyList;
+	while ((tmpE = tmpE->getNext())) {
+		display_mask(tmpE->getX(), tmpE->getY(), "E");//tmp0->getMask());
+	}
+
+	tmpP = &gs.projList;
+	while ((tmpP = tmpP->getNext())) {
+		display_mask(tmpP->getX(), tmpP->getY(), "|");//tmp0->getMask());
+	}
+
+	display_mask(gs.player.getX(), gs.player.getY(), "P");//tmp0->getMask());
+
 	refresh();
 	return (0);
 }

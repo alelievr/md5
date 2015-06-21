@@ -12,6 +12,7 @@ std::string		sgetl( std::string s ) {
 }
 
 void	loop( GameStatus & gs ) {
+	sleep(1);
 	get_key();
 	/*if (datas->key == KEY_RESIZE)
 	{
@@ -20,33 +21,14 @@ void	loop( GameStatus & gs ) {
 		display_2048(datas);
 	}*/
 	display(gs);
-/*
-	Obstacle *	tmp;
-	Obstacle *	tmp2;
-	gm.obstacleList.append(new Obstacle(1, 2));
-	gm.obstacleList.append(new Obstacle(2, 2));
-	gm.obstacleList.append(new Obstacle(3, 2));
-	gm.Colision();
-	tmp = gm.obstacleList.getNext();
-	while (tmp)
-	{
-		std::cout << "o in " << tmp->getX() << "/" << tmp->getY() << std::endl;
-		tmp2 = tmp;
-		tmp = tmp->getNext();
-	}
-	tmp = tmp2;
-	while (tmp)
-	{
-		std::cout << "o in " << tmp->getX() << "/" << tmp->getY() << std::endl;
-		tmp = tmp->getPrev();
-	}*/
+	gs.Colision();
 }
 
 int		main(void)
 {
 	playBackground();
 	loadSounds();
-	PlayerShip	ps("player", 2, 2, 10, 10);
+	PlayerShip	ps("player", 10, 10, 10, 10);
 	GameStatus	gs(ps, 0, 1);
 	initscr();
 	raw();
@@ -54,8 +36,14 @@ int		main(void)
 	nodelay(stdscr, TRUE);
 	curs_set(0);
 	   scrollok(stdscr, TRUE);
+
 //	gs.EndGame();
 //	gs.PauseGame();
+	gs.obstacleList.append(new Obstacle(1, 2));
+	gs.obstacleList.append(new Obstacle(2, 2));
+	gs.projList.append(new Projectile(10, 8, 1, '|'));
+	gs.enemyList.append(new EnemyShip("Nyan", 10, 15, 42, 42));
+
 	while (42)
 		loop(gs);
 }
