@@ -19,8 +19,9 @@ class		EnemyShip : public Ship
 		void		fire(void);
 		void		die(void);
 		void		move(void);
-		EnemyShip*   getNext(void) const;
-		void    setNext(EnemyShip*);
+		EnemyShip*  getNext(void) const;
+		void		setNext(EnemyShip*);
+		void		nextPosition(void);
 
 		EnemyShip*   getPrev(void) const;
 		void    setPrev(EnemyShip*);

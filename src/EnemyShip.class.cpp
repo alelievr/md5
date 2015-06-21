@@ -30,11 +30,13 @@ EnemyShip::~EnemyShip(void)
 
 void	EnemyShip::fire(void)
 {
+	playSound(SOUND_LASER);
 	this->fireTimer = clock() + INTER_FIRE_ENEMY + (rand() % 10000);
 }
 
 void	EnemyShip::die(void)
 {
+	playSound(SOUND_EXPLOSION);
 	delete this;
 }
 
@@ -67,4 +69,17 @@ EnemyShip*   EnemyShip::getPrev( void ) const {
 
 void    EnemyShip::setPrev( EnemyShip* s ) {
 	this->_prev = s;
+}
+
+void	EnemyShip::nextPosition(void)
+{
+	if (rand() % 3)
+		this->setY(this->getY() + this->direction);
+	else
+	{
+		if (rand() % 2)
+			this->setX(this->getX() + 1);
+		else
+			this->setX(this->getX() - 1);
+	}
 }

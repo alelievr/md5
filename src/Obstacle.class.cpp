@@ -20,6 +20,25 @@ Obstacle::Obstacle(int x, int y) : Ship("Asteroid", x, y, 500000, 500000)
 //	std::cout << "new ostacle in " << x << "/" << y << std::endl;
 }
 
+Obstacle &	Obstacle::operator=(Obstacle const & src)
+{
+	if (this != &src)
+	{
+		this->setName(src.getName());
+		this->setX(src.getX());
+		this->setY(src.getY());
+		this->setHP(src.getHP());
+		this->setMHP(src.getMHP());
+		this->setMask(src.getMask());
+		this->setDam(src.getDam());
+		this->setMask(src.getMask());
+		this->setDisplay(true);
+		this->setHeight(src.getHeight());
+		this->setWidth(src.getWidth());
+	}
+	return (*this);
+}
+
 Obstacle::~Obstacle(void)
 {
 //	std::cout << "Destructed Asteroid" << std::endl;

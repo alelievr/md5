@@ -66,9 +66,9 @@ void	GameStatus::Colision(void)
 		while (tmpO)
 		{
 			if (tmpP->getX() >= tmpO->getX() &&
-					tmpP->getX() <= tmpO->getX() + tmpO->getWidth())
+					tmpP->getX() < tmpO->getX() + tmpO->getWidth())
 				if (tmpP->getY() >= tmpO->getY() &&
-						tmpP->getY() <= tmpO->getY() + tmpO->getHeight())
+						tmpP->getY() < tmpO->getY() + tmpO->getHeight())
 				{
 					tmpO->takeDam(tmpP->getDam());
 					toDelete = true;
@@ -82,9 +82,9 @@ void	GameStatus::Colision(void)
 		while (tmpE)
 		{
 			if (tmpP->getX() >= tmpE->getX() && !toDelete
-					&& tmpP->getX() <= tmpE->getX() + tmpE->getWidth())
+					&& tmpP->getX() < tmpE->getX() + tmpE->getWidth())
 				if (tmpP->getY() >= tmpE->getY()
-						&& tmpP->getY() <= tmpE->getY() + tmpE->getHeight())
+						&& tmpP->getY() < tmpE->getY() + tmpE->getHeight())
 				{
 					tmpE->takeDam(tmpP->getDam());
 					toDelete = true;
@@ -95,9 +95,9 @@ void	GameStatus::Colision(void)
 
 		//PlayerShip colision:
 		if (tmpP->getX() >= this->player.getX() && !toDelete
-				&& tmpP->getX() <= this->player.getX() + this->player.getWidth())
+				&& tmpP->getX() < this->player.getX() + this->player.getWidth())
 			if (tmpP->getY() >= this->player.getY()
-					&& tmpP->getY() <= this->player.getY() + this->player.getHeight())
+					&& tmpP->getY() < this->player.getY() + this->player.getHeight())
 				{
 					this->player.takeDam(tmpP->getDam());
 					toDelete = true;
@@ -114,9 +114,9 @@ void	GameStatus::Colision(void)
 	while (tmpO)
 	{
 		if (this->player.getX() >= tmpO->getX() &&
-				this->player.getX() <= tmpO->getX() + tmpO->getWidth())
+				this->player.getX() < tmpO->getX() + tmpO->getWidth())
 			if (this->player.getY() >= tmpO->getY() &&
-					this->player.getY() <= tmpO->getY() + tmpO->getHeight())
+					this->player.getY() < tmpO->getY() + tmpO->getHeight())
 			{
 				this->player.takeDam(tmpO->getDam());
 				tmpO->takeDam(this->player.getDam());
@@ -130,13 +130,12 @@ void	GameStatus::Colision(void)
 	while (tmpE)
 	{
 		if (this->player.getX() >= tmpE->getX()
-				&& this->player.getX() <= tmpE->getX() + tmpE->getWidth())
+				&& this->player.getX() < tmpE->getX() + tmpE->getWidth())
 			if (this->player.getY() >= tmpE->getY()
-					&& this->player.getY() <= tmpE->getY() + tmpE->getHeight())
+					&& this->player.getY() < tmpE->getY() + tmpE->getHeight())
 			{
 				tmpE->takeDam(this->player.getDam());
 				this->player.takeDam(tmpE->getDam());
-			//	debug("enemy colision with you!\n");
 			}
 		tmpE = tmpE->next;
 	}
@@ -169,12 +168,22 @@ void		GameStatus::Update(void)
 			tmpO->move();
 	if (this->getKey())
 	{
-		this->player.move(this->getKey());
 		if (this->getKey() == 32)
 		{
-			this->projList.append(new Projectile(this->player.getX(), this->player.getY() + this->getHeight() + 5, this->player.direction, this->player.getDam(), '|'));
+			if (clock() >= this->player.fireTimer)
+			{
+				this->player.fire();
+				this->projList.append(new Projectile(this->player.getX(), this->player.getY() + this->player.getWidth(), 1, this->player.getDam(), '|'));
+				this->player.fireTimer = clock() + INTER_FIRE_PLAYER;
+				this->setKey(0);
+			}
 		}
-		this->setKey(0);
+		else if (clock() >= this->player.moveTimer)
+		{
+			this->player.moveTimer = clock() + INTER_MOVE_PLAYER;
+			this->player.move(this->getKey());
+			this->setKey(0);
+		}
 	}
 }
 
