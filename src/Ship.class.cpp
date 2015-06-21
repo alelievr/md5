@@ -56,11 +56,14 @@ void	Ship::die(void)
 
 void	Ship::move(int x, int y)
 {
-	(void)x;
-	(void)y;
-//	std::cout << "Ship move at " << x << "/" << y << std::endl;
+	this->_x = x;
+	this->_y = y;
 }
 
+void		Ship::nextPosition(void)
+{
+	this->_x += this->direction;
+}
 
 Ship &	Ship::operator=(Ship const & src)
 {

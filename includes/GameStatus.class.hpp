@@ -29,7 +29,7 @@ class		GameStatus {
 		PlayerShip	player;
 
 		void	Colision(void);
-
+		void	Update(void);
 		void	PauseGame(void);
 
 		void	EndGame(void);

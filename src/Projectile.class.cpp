@@ -1,5 +1,6 @@
 #include "Projectile.class.hpp"
 #include "Ship.class.hpp"
+#include "ft_retro.hpp"
 
 Projectile::Projectile(void) : Ship("Projectile", 0, 0, 50000, 50000)
 {
@@ -12,6 +13,7 @@ Projectile::Projectile(int a0, int a1, int a2, char a3) : Ship("Projectile", a0,
 	this->setPrev(NULL);
 	this->direction = a2;
 	this->c = a3;
+	this->moveTimer = INTER_MOVE_PROJECTILE;
 	this->speed = 0;
 //	std::cout << "Default constructor called" << std::endl;
 }
@@ -51,6 +53,7 @@ std::ostream &	operator<<(std::ostream & o, Projectile const & r)
 	(void)r;
 	return (o);
 }
+
 void Projectile::append( Projectile* newProjectile ) {
 	if (this->getNext() == NULL) {
 		this->setNext(newProjectile);

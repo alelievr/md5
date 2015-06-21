@@ -8,6 +8,8 @@ Obstacle::Obstacle(void)
 
 	this->setDisplay(false);
 	this->setMask(m[rand() % 4]);
+	this->direction = -1;
+	this->moveTimer = INTER_MOVE_OBSTACLE;
 	Obstacle(0, 0);
 }
 

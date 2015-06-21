@@ -13,6 +13,8 @@ EnemyShip::EnemyShip(std::string name, int x, int y, int hp, int maxhp) : Ship(n
 	this->setPrev(NULL);
 	this->setMask(m[rand() % 4]);
 	this->direction = -1;
+	this->fireTimer = INTER_FIRE_ENEMY;
+	this->moveTimer = INTER_MOVE_ENEMY;
 //	std::cout << "Enemy ship created on " << x << "/" << y << std::endl;
 }
 

@@ -2,6 +2,7 @@
 #include <chrono>
 #include <unistd.h>
 #include <ctime>
+#include <fstream>
 
 std::string		sgetl( std::string s ) {
 	if (getline(std::cin, s) == 0) {
@@ -11,6 +12,16 @@ std::string		sgetl( std::string s ) {
 	return (s);
 }
 
+void	debug(std::string t)
+{
+	std::ofstream file;
+
+	file.open("debug.txt", std::ios::app | std::ios::out | std::ios::in);
+	file << t;
+	file.close();
+}
+
+<<<<<<< HEAD
 static int	loop( GameStatus & gs ) {
 	get_key(gs);
 	if (gs.getKey() == KEY_RESIZE) {
