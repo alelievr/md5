@@ -6,7 +6,7 @@
 /*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 00:54:20 by alelievr          #+#    #+#             */
-/*   Updated: 2015/06/21 09:35:42 by alelievr         ###   ########.fr       */
+/*   Updated: 2015/06/21 11:04:08 by blemee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ int		main(void)
 	nodelay(stdscr, TRUE);
 	curs_set(0);
 	resize(gs);
+
+	start_color();			/* Start color 			*/
+	init_pair(1, COLOR_RED, COLOR_BLACK);
 
 //	gs.EndGame();
 //	gs.PauseGame();

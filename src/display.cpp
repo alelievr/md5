@@ -92,10 +92,14 @@ int		display( GameStatus& gs ) {
 		display_mask(gs, tmpE->getX(), tmpE->getY(), tmpE->getHeight(), tmpE->getMask());
 	}
 
+	attron(COLOR_PAIR(1));
+	attron(A_BOLD);
 	tmpP = &gs.projList;
 	while ((tmpP = tmpP->getNext())) {
 		display_mask(gs, tmpP->getX(), tmpP->getY(), tmpP->getHeight(), tmpP->getMask());
 	}
+	attroff(A_BOLD);
+	attroff(COLOR_PAIR(1));
 
 	display_mask(gs, gs.player.getX(), gs.player.getY(), gs.player.getHeight(), gs.player.getMask());
 
