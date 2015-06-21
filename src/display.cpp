@@ -1,21 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   display.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: blemee <blemee@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/06/21 01:35:41 by blemee            #+#    #+#             */
-/*   Updated: 2015/06/21 09:06:08 by alelievr         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "ft_retro.hpp"
 
-static void	display_mask(GameStatus& gs, int x, int y, std::string mask) {
+static void	display_mask(GameStatus& gs, int x, int y, int maskHeight, std::string mask) {
 	char buf[2] = {0};
 	int xOffset = 0;
-	int yOffset = 0;
+	int yOffset = -maskHeight;
+	(void)maskHeight;
 
 	mvaddstr(0, 0, std::to_string(gs.getWidth()).c_str());
 	mvaddstr(0, 5, std::to_string(gs.getHeight()).c_str());
@@ -42,21 +31,20 @@ int		display(GameStatus& gs ) {
 
 	tmpO = &gs.obstacleList;
 	while ((tmpO = tmpO->getNext())) {
-		display_mask(gs, tmpO->getX(), tmpO->getY(), tmpO->getMask());
+		display_mask(gs, tmpO->getX(), tmpO->getY(), tmpO->getHeight(), tmpO->getMask());
 	}
 
 	tmpE = &gs.enemyList;
 	while ((tmpE = tmpE->getNext())) {
-		display_mask(gs, tmpE->getX(), tmpE->getY(), tmpE->getMask());
+		display_mask(gs, tmpE->getX(), tmpE->getY(), tmpE->getHeight(), tmpE->getMask());
 	}
 
 	tmpP = &gs.projList;
 	while ((tmpP = tmpP->getNext())) {
-		display_mask(gs, tmpP->getX(), tmpP->getY(), tmpP->getMask());
+		display_mask(gs, tmpP->getX(), tmpP->getY(), tmpP->getHeight(), tmpP->getMask());
 	}
 
-	display_mask(gs, gs.player.getX(), gs.player.getY(), gs.player.getMask());
-	mvaddstr(5, 20, gs.player.getMask().c_str());
+	mvaddstr(0, 15, std::to_string(gs.getKey()).c_str());
 
 	refresh();
 	return (0);
