@@ -1,4 +1,6 @@
 #include "Projectile.class.hpp"
+#include "Ship.class.hpp"
+#include "ft_retro.hpp"
 
 Projectile::Projectile(void) : Ship("Projectile", 0, 0, 50000, 50000)
 {
@@ -11,19 +13,20 @@ Projectile::Projectile(int a0, int a1, int a2, char a3) : Ship("Projectile", a0,
 	this->setPrev(NULL);
 	this->direction = a2;
 	this->c = a3;
+	this->moveTimer = INTER_MOVE_PROJECTILE;
 	this->speed = 0;
-	std::cout << "Default constructor called" << std::endl;
+//	std::cout << "Default constructor called" << std::endl;
 }
 
 Projectile::Projectile(Projectile const & src)
 {
 	*this = src;
-	std::cout << "Copy constructor called" << std::endl;
+//	std::cout << "Copy constructor called" << std::endl;
 }
 
 Projectile::~Projectile(void)
 {
-	std::cout << "Destructor called" << std::endl;
+//	std::cout << "Destructor called" << std::endl;
 	if (this->getPrev() != NULL)
 		this->setPrev(this->getNext());
 	if (this->getNext() != NULL)
@@ -32,7 +35,7 @@ Projectile::~Projectile(void)
 
 Projectile &	Projectile::operator=(Projectile const & src)
 {
-	std::cout << "Assignment operator called" << std::endl;
+//	std::cout << "Assignment operator called" << std::endl;
 
 	if (this != &src) {
 		this->setX(src.getX());
@@ -50,11 +53,12 @@ std::ostream &	operator<<(std::ostream & o, Projectile const & r)
 	(void)r;
 	return (o);
 }
+
 void Projectile::append( Projectile* newProjectile ) {
 	if (this->getNext() == NULL) {
 		this->setNext(newProjectile);
 		this->getNext()->setPrev(this);
-		std::cout << "Appened to list" << std::endl;
+//		std::cout << "Appened to list" << std::endl;
 	} else
 		this->getNext()->append(newProjectile);
 }

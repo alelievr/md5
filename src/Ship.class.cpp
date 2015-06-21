@@ -13,19 +13,19 @@ Ship::Ship(std::string a0, int a1, int a2, int a3, int a4) : _name(a0), _x(a1), 
 	this->direction = 0;
 	this->_index = genIndex();
 	this->setDisplay(true);
-	std::cout << "Default constructor called" << std::endl;
+	//std::cout << "Default constructor called" << std::endl;
 }
 
 Ship::Ship(Ship const & src)
 {
 	*this = src;
 	this->_index = genIndex();
-	std::cout << "Copy constructor called" << std::endl;
+//	std::cout << "Copy constructor called" << std::endl;
 }
 
 Ship::~Ship(void)
 {
-	std::cout << "Destructor called" << std::endl;
+//	std::cout << "Destructor called" << std::endl;
 /*	if (this->getPrev() != NULL)
 		this->setPrev(this->getNext());
 	if (this->getNext() != NULL)
@@ -60,10 +60,14 @@ void	Ship::move(int x, int y)
 	this->_y = y;
 }
 
+void		Ship::nextPosition(void)
+{
+	this->_x += this->direction;
+}
 
 Ship &	Ship::operator=(Ship const & src)
 {
-	std::cout << "Assignment operator called" << std::endl;
+//	std::cout << "Assignment operator called" << std::endl;
 
 	if (this != &src) {
 		this->_name = src.getName();

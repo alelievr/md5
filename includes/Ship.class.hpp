@@ -18,7 +18,7 @@ class		Ship
 		int		_width;
 
 	protected:
-		std::string data;
+		std::string		data;
 		Ship*	_next;
 		Ship*	_prev;
 
@@ -30,13 +30,16 @@ class		Ship
 
 		Ship &	operator=(Ship const & src);
 
-		int			direction;
+		int				direction;
+		unsigned long	fireTimer;
+		unsigned long	moveTimer;
 
 		virtual void	fire(void);
 		virtual void	die(void);
 		virtual void	move(int x, int y);
 		void			setMask(std::string mask);
 		std::string		getMask(void);
+		void			nextPosition(void);
 
 		std::string	getName(void) const;
 		void	setName(std::string tmp);
@@ -55,7 +58,6 @@ class		Ship
 
 		int	getIndex(void) const;
 		void	setIndex(int i);
-
 
 		int	getDam(void) const;
 		void	setDam(int);

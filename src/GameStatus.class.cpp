@@ -1,10 +1,9 @@
 #include "GameStatus.class.hpp"
 
-
 GameStatus::GameStatus(PlayerShip a0, int a1, int a2) : _difficulty(a1), _speed(a2), player(a0)
 {
 	srand(time(NULL));
-	std::cout << "Default constructor called" << std::endl;
+//	std::cout << "Default constructor called" << std::endl;
 	this->_pause = true;
 	this->enemyList.setDisplay(false);
 	this->obstacleList.setDisplay(false);
@@ -19,7 +18,7 @@ GameStatus::GameStatus(PlayerShip a0, int a1, int a2) : _difficulty(a1), _speed(
 
 GameStatus::~GameStatus(void)
 {
-	std::cout << "Destructor called" << std::endl;
+//	std::cout << "Destructor called" << std::endl;
 }
 
 void	GameStatus::PauseGame(void) 
@@ -68,7 +67,7 @@ void	GameStatus::Colision(void)
 						tmpP->getY() <= tmpO->getY() + tmpO->getHeight())
 				{
 					tmpO->takeDam(tmpP->getDam());
-					std::cout << "obstacle colision !" << std::endl;
+			//		debug("obstacle colision !\n");
 				}
 			tmpO = tmpO->getNext();
 		}
@@ -83,7 +82,7 @@ void	GameStatus::Colision(void)
 						&& tmpP->getY() <= tmpE->getY() + tmpE->getHeight())
 				{
 					tmpE->takeDam(tmpP->getDam());
-					std::cout << "enemy colision !" << std::endl;
+			//		debug("enemy colision !\n");
 				}
 			tmpE = tmpE->next;
 		}
@@ -95,7 +94,7 @@ void	GameStatus::Colision(void)
 					&& tmpP->getY() <= this->player.getY() + this->player.getHeight())
 			{
 				this->player.takeDam(tmpP->getDam());
-				std::cout << "playerShip colision !" << std::endl;
+			//	debug("playerShip colision !\n");
 			}
 		tmpP = tmpP->getNext();
 	}
@@ -111,7 +110,7 @@ void	GameStatus::Colision(void)
 			{
 				this->player.takeDam(tmpO->getDam());
 				tmpO->takeDam(this->player.getDam());
-				std::cout << "obstacle colision with you !" << std::endl;
+			//	debug("obstacle colision with you !\n");
 			}
 		tmpO = tmpO->getNext();
 	}
@@ -127,15 +126,39 @@ void	GameStatus::Colision(void)
 			{
 				tmpE->takeDam(this->player.getDam());
 				this->player.takeDam(tmpE->getDam());
-				std::cout << "enemy colision with you!" << std::endl;
+			//	debug("enemy colision with you!\n");
 			}
 		tmpE = tmpE->next;
 	}
 }
 
+void		GameStatus::Update(void)
+{
+	Projectile *	tmpP;
+	EnemyShip *		tmpE;
+	Obstacle *		tmpO;
+
+	tmpP = &this->projList;
+	while ((tmpP = tmpP->getNext()))
+		if (clock() >= tmpP->moveTimer)
+			tmpP->nextPosition();
+	tmpE = &this->enemyList;
+	while ((tmpE = tmpE->getNext()))
+	{
+		if (clock() >= tmpE->moveTimer)
+			tmpE->nextPosition();
+		if (clock() >= tmpE->fireTimer)
+			this->projList.append(new Projectile(tmpE->getX(), tmpE->getY(), tmpE->direction, '|'));
+	}
+	tmpO = &this->obstacleList;
+	while ((tmpO = tmpO->getNext()))
+		if (clock() >= tmpO->moveTimer)
+			tmpO->nextPosition();
+}
+
 GameStatus &	GameStatus::operator=(GameStatus const & src)
 {
-	std::cout << "Assignment operator called" << std::endl;
+//	std::cout << "Assignment operator called" << std::endl;
 
 	if (this != &src) {
 		this->player = src.getShip();

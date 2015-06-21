@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/04/04 19:22:36 by alelievr          #+#    #+#              #
-#    Updated: 2015/06/20 23:25:18 by alelievr         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 #################
 ##  VARIABLES  ##
 #################
@@ -24,6 +12,8 @@ SRC			=	EnemyShip.class.cpp		\
 				Projectile.class.cpp	\
 				loadSounds.cpp			\
 				main.cpp				\
+				get_key.cpp				\
+				display.cpp				\
 
 #	Objects
 OBJDIR		=	obj
@@ -33,7 +23,7 @@ INCDIR		=	includes/ fmod/inc
 
 #	Libraries
 LIBDIR		=	
-LIBS		=	
+LIBS		=	ncurses
 
 DYNLIB	 	= fmod/lib/libfmod.dylib fmod/lib/libfmodL.dylib
 

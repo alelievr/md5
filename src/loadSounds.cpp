@@ -1,17 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   loadSounds.cpp                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/06/20 17:37:20 by alelievr          #+#    #+#             */
-/*   Updated: 2015/06/20 23:20:45 by alelievr         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "fmod.hpp"
-#include "ft_retro.h"
+#include "ft_retro.hpp"
 
 FMOD::Sound *	getSoundData(FMOD::Sound *sound, int i)
 {

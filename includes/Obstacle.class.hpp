@@ -1,5 +1,6 @@
 #ifndef OBSTACLE_CLASS_HPP
 # define OBSTACLE_CLASS_HPP
+# include "Ship.class.hpp"
 
 class	Obstacle : public Ship
 {

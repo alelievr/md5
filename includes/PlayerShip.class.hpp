@@ -1,6 +1,6 @@
 #ifndef PLAYERSHIP_HPP
 # define PLAYERSHIP_HPP
-# include "ft_retro.h"
+# include "Ship.class.hpp"
 
 class		PlayerShip : public Ship
 {

@@ -1,11 +1,13 @@
-#ifndef GAMESTATUS_HPP
-# define GAMESTATUS_HPP
+#ifndef GAME_STATUS_CLASS_HPP
+# define GAME_STATUS_CLASS_HPP
 # include <iostream>
 # include <string>
-# include "ft_retro.h"
+# include "PlayerShip.class.hpp"
+# include "EnemyShip.class.hpp"
+# include "Obstacle.class.hpp"
+# include "Projectile.class.hpp"
 
-class		GameStatus
-{
+class		GameStatus {
 	private:
 		int	_difficulty;
 		int	_speed;
@@ -24,7 +26,7 @@ class		GameStatus
 		PlayerShip	player;
 
 		void	Colision(void);
-
+		void	Update(void);
 		void	PauseGame(void);
 
 		void	EndGame(void);
@@ -43,5 +45,4 @@ class		GameStatus
 };
 
 std::ostream &	operator<<(std::ostream & o, GameStatus const & r);
-
 #endif

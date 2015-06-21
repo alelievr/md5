@@ -1,4 +1,6 @@
-#include "ft_retro.h" 
+#include "Ship.class.hpp"
+#include "PlayerShip.class.hpp"
+#include "ft_retro.hpp"
 
 PlayerShip::PlayerShip(std::string name, int x, int y, int  hp , int maxhp) : Ship(name, x, y, hp, maxhp)
 {
@@ -6,7 +8,7 @@ PlayerShip::PlayerShip(std::string name, int x, int y, int  hp , int maxhp) : Sh
 	this->direction = 1;
 	this->_life = 5;
 	this->_isDead = false;
-	std::cout << "playership constructed : " << std::endl<< this->data << std::endl;
+	//std::cout << "playership constructed : " << std::endl<< this->data << std::endl;
 }
 
 int			PlayerShip::getLife(void)
@@ -35,10 +37,10 @@ void		PlayerShip::move(int x, int y)
 {
 	this->setX(x);
 	this->setY(y);
-	std::cout << "Playership moved at " << x << "/" << y << std::endl;
+//	std::cout << "Playership moved at " << x << "/" << y << std::endl;
 }
 
 PlayerShip::~PlayerShip(void)
 {
-	std::cout << "PlayerShip destroyed !" << std::endl;
+//	std::cout << "PlayerShip destroyed !" << std::endl;
 }

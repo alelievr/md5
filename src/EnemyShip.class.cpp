@@ -1,4 +1,5 @@
-#include "ft_retro.h"
+#include "EnemyShip.class.hpp"
+#include "ft_retro.hpp"
 
 EnemyShip::EnemyShip(void) : Ship("Enemy", 0, 0, 0, 0)
 {
@@ -12,7 +13,9 @@ EnemyShip::EnemyShip(std::string name, int x, int y, int hp, int maxhp) : Ship(n
 	this->setPrev(NULL);
 	this->setMask(m[rand() % 4]);
 	this->direction = -1;
-	std::cout << "Enemy ship created on " << x << "/" << y << std::endl;
+	this->fireTimer = INTER_FIRE_ENEMY;
+	this->moveTimer = INTER_MOVE_ENEMY;
+//	std::cout << "Enemy ship created on " << x << "/" << y << std::endl;
 }
 
 EnemyShip::~EnemyShip(void)
@@ -36,13 +39,15 @@ void	EnemyShip::die(void)
 
 void	EnemyShip::move(int x, int y)
 {
-	std::cout << "EnemyShip moves at " << x << "/" << y << std::endl;
+	(void)x;
+	(void)y;
+//	std::cout << "EnemyShip moves at " << x << "/" << y << std::endl;
 }
 void EnemyShip::append( EnemyShip* newEnemyShip ) {
 	if (this->getNext() == NULL) {
 		this->setNext(newEnemyShip);
 		this->getNext()->setPrev(this);
-		std::cout << "Appened to list" << std::endl;
+//		std::cout << "Appened to list" << std::endl;
 	} else
 		this->getNext()->append(newEnemyShip);
 }
