@@ -173,6 +173,25 @@ int		Ship::genIndex(void)
 	return (++i);
 }
 
+void	Ship::setMask(std::string m)
+{
+	int		w = 0, h = 0;
+
+	for (int i = 0; m[i] && m[i] != '\n'; i++)
+		w++;
+	for (int i = 0; m[i]; i++)
+		if (m[i] == '\n')
+			h++;
+	std::cout << "w = " << w << " and h = " << h << std::endl;
+	this->_width = w;
+	this->_height = h;
+	this->data = m;
+}
+
+std::string		Ship::getMask(void)
+{
+	return (this->data);
+}
 
 
 /*

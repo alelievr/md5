@@ -6,7 +6,7 @@
 /*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 00:54:20 by alelievr          #+#    #+#             */
-/*   Updated: 2015/06/20 23:23:51 by alelievr         ###   ########.fr       */
+/*   Updated: 2015/06/21 02:18:09 by alelievr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	loop(GameStatus & gm)
 	gm.obstacleList.append(new Obstacle(1, 2));
 	gm.obstacleList.append(new Obstacle(2, 2));
 	gm.obstacleList.append(new Obstacle(3, 2));
+	gm.Colision();
 	tmp = gm.obstacleList.getNext();
 	while (tmp)
 	{
@@ -52,7 +53,7 @@ int		main(void)
 {
 	playBackground();
 	loadSounds();
-	PlayerShip	ps("player", 1, 1, 10, 10);
+	PlayerShip	ps("player", 2, 2, 10, 10);
 	GameStatus	gs(ps, 0, 1);
 	gs.EndGame();
 	gs.PauseGame();

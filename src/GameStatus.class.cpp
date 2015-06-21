@@ -3,6 +3,7 @@
 
 GameStatus::GameStatus(PlayerShip a0, int a1, int a2) : _difficulty(a1), _speed(a2), player(a0)
 {
+	srand(time(NULL));
 	std::cout << "Default constructor called" << std::endl;
 	this->_pause = true;
 	this->enemyList.setDisplay(false);
@@ -52,10 +53,26 @@ void	GameStatus::Colision(void)
 {
 	Projectile *	tmpP;
 	EnemyShip *		tmpE;
+	Obstacle *		tmpO;
 
 	tmpP = this->projList.getNext();
 	while (tmpP)
 	{
+		// Obstacle collisions:
+		tmpO = this->obstacleList.getNext();
+		while (tmpO)
+		{
+			if (tmpP->getX() >= tmpO->getX() &&
+					tmpP->getX() <= tmpO->getX() + tmpO->getWidth())
+				if (tmpP->getY() >= tmpO->getY() &&
+						tmpP->getY() <= tmpO->getY() + tmpO->getHeight())
+				{
+					tmpO->takeDam(tmpP->getDam());
+					std::cout << "obstacle colision !" << std::endl;
+				}
+			tmpO = tmpO->getNext();
+		}
+
 		tmpE = this->enemyList.getNext();
 		// EnemyShip colision:
 		while (tmpE)
@@ -64,7 +81,10 @@ void	GameStatus::Colision(void)
 					&& tmpP->getX() <= tmpE->getX() + tmpE->getWidth())
 				if (tmpP->getY() >= tmpE->getY()
 						&& tmpP->getY() <= tmpE->getY() + tmpE->getHeight())
+				{
 					tmpE->takeDam(tmpP->getDam());
+					std::cout << "enemy colision !" << std::endl;
+				}
 			tmpE = tmpE->next;
 		}
 
@@ -73,8 +93,43 @@ void	GameStatus::Colision(void)
 				&& tmpP->getX() <= this->player.getX() + this->player.getWidth())
 			if (tmpP->getY() >= this->player.getY()
 					&& tmpP->getY() <= this->player.getY() + this->player.getHeight())
+			{
 				this->player.takeDam(tmpP->getDam());
+				std::cout << "playerShip colision !" << std::endl;
+			}
 		tmpP = tmpP->getNext();
+	}
+
+	// Obstacle collisions with playerShip:
+	tmpO = this->obstacleList.getNext();
+	while (tmpO)
+	{
+		if (this->player.getX() >= tmpO->getX() &&
+				this->player.getX() <= tmpO->getX() + tmpO->getWidth())
+			if (this->player.getY() >= tmpO->getY() &&
+					this->player.getY() <= tmpO->getY() + tmpO->getHeight())
+			{
+				this->player.takeDam(tmpO->getDam());
+				tmpO->takeDam(this->player.getDam());
+				std::cout << "obstacle colision with you !" << std::endl;
+			}
+		tmpO = tmpO->getNext();
+	}
+
+	tmpE = this->enemyList.getNext();
+	// EnemyShip colision with you:
+	while (tmpE)
+	{
+		if (this->player.getX() >= tmpE->getX()
+				&& this->player.getX() <= tmpE->getX() + tmpE->getWidth())
+			if (this->player.getY() >= tmpE->getY()
+					&& this->player.getY() <= tmpE->getY() + tmpE->getHeight())
+			{
+				tmpE->takeDam(this->player.getDam());
+				this->player.takeDam(tmpE->getDam());
+				std::cout << "enemy colision with you!" << std::endl;
+			}
+		tmpE = tmpE->next;
 	}
 }
 
