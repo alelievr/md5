@@ -15,7 +15,7 @@ PlayerShip::PlayerShip(std::string name, int x, int y, int  hp , int maxhp) : Sh
 	this->_isDead = false;
 	this->moveTimer = 0;
 	this->fireTimer = 0;
-	this->setDam(100);
+	this->setDam(10);
 }
 
 PlayerShip &	PlayerShip::operator=(PlayerShip const & src)
