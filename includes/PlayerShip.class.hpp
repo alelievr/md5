@@ -4,6 +4,10 @@
 
 class		PlayerShip : public Ship
 {
+	private:
+		int		_life;
+		bool	_isDead;
+
 	public:
 		enum	e_keys {
 			FORWARD = 0,
@@ -22,6 +26,8 @@ class		PlayerShip : public Ship
 		void		fire(void);
 		void		die(void);
 		void		move(int x, int y);
+		int			getLife(void);
+		bool		isAlive(void);
 };
 
 #endif
