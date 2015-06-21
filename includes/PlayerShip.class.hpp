@@ -20,14 +20,19 @@ class		PlayerShip : public Ship
 		};
 		int		keys;
 
+		PlayerShip(void);
 		PlayerShip(std::string name, int x, int y, int hp, int maxhp);
+		PlayerShip(PlayerShip const & src);
 		~PlayerShip(void);
+
+		PlayerShip &	operator=(PlayerShip const & src);
 
 		void		fire(void);
 		void		die(void);
-		void		move(int x, int y);
-		int			getLife(void);
-		bool		isAlive(void);
+		void		move(void);
+		void		move(int key);
+		int			getLife(void) const;
+		bool		isAlive(void) const;
 };
 
 #endif

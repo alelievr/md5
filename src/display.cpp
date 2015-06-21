@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   display.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: blemee <blemee@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/06/21 01:35:41 by blemee            #+#    #+#             */
-/*   Updated: 2015/06/21 10:36:14 by blemee           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "ft_retro.hpp"
 
 static void	display_mask(GameStatus& gs, int x, int y, int maskHeight, std::string mask) {
@@ -110,7 +98,6 @@ int		display( GameStatus& gs ) {
 	}
 
 	display_mask(gs, gs.player.getX(), gs.player.getY(), gs.player.getHeight(), gs.player.getMask());
-
 
 	refresh();
 	return (0);

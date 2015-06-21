@@ -36,9 +36,9 @@ class		Ship
 
 		virtual void	fire(void);
 		virtual void	die(void);
-		virtual void	move(int x, int y);
+		virtual void	move(void);
 		void			setMask(std::string mask);
-		std::string		getMask(void);
+		std::string		getMask(void) const;
 		void			nextPosition(void);
 
 		std::string	getName(void) const;
