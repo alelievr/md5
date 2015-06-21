@@ -17,7 +17,6 @@ Obstacle::Obstacle(int x, int y) : Ship("Asteroid", x, y, 500000, 500000)
 {
 	this->setNext(NULL);
 	this->setPrev(NULL);
-//	std::cout << "new ostacle in " << x << "/" << y << std::endl;
 }
 
 Obstacle &	Obstacle::operator=(Obstacle const & src)
@@ -41,7 +40,6 @@ Obstacle &	Obstacle::operator=(Obstacle const & src)
 
 Obstacle::~Obstacle(void)
 {
-//	std::cout << "Destructed Asteroid" << std::endl;
 	if (this->getPrev() != NULL)
 		this->getPrev()->setNext(this->getNext());
 	if (this->getNext() != NULL)
@@ -62,7 +60,6 @@ void Obstacle::append( Obstacle* newObstacle ) {
 	if (this->getNext() == NULL) {
 		this->setNext(newObstacle);
 		this->getNext()->setPrev(this);
-//		std::cout << "Appened to list" << std::endl;
 	} else
 		this->getNext()->append(newObstacle);
 }

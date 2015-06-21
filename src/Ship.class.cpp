@@ -14,23 +14,16 @@ Ship::Ship(std::string a0, int a1, int a2, int a3, int a4) : _name(a0), _x(a1), 
 	this->_damage = 0;
 	this->_index = genIndex();
 	this->setDisplay(true);
-	//std::cout << "Default constructor called" << std::endl;
 }
 
 Ship::Ship(Ship const & src)
 {
 	*this = src;
 	this->_index = genIndex();
-//	std::cout << "Copy constructor called" << std::endl;
 }
 
 Ship::~Ship(void)
 {
-//	std::cout << "Destructor called" << std::endl;
-/*	if (this->getPrev() != NULL)
-		this->setPrev(this->getNext());
-	if (this->getNext() != NULL)
-		this->setNext(this->getNext());*/
 }
 
 int		Ship::getDam( void  ) const {
@@ -69,8 +62,6 @@ void		Ship::nextPosition(void)
 
 Ship &	Ship::operator=(Ship const & src)
 {
-//	std::cout << "Assignment operator called" << std::endl;
-
 	if (this != &src) {
 		this->_name = src.getName();
 		this->_x = src.getX();
@@ -189,7 +180,6 @@ void	Ship::setMask(std::string m)
 	for (int i = 0; m[i]; i++)
 		if (m[i] == '\n')
 			h++;
-	std::cout << "w = " << w << " and h = " << h << std::endl;
 	this->_width = w;
 	this->_height = h;
 	this->data = m;
@@ -199,31 +189,3 @@ std::string		Ship::getMask(void) const
 {
 	return (this->data);
 }
-
-
-/*
-void Ship::append( Ship* newShip ) {
-	if (this->getNext() == NULL) {
-		this->setNext(newShip);
-		this->getNext()->setPrev(this);
-		std::cout << "Appened to list" << std::endl;
-	} else
-		this->getNext()->append(newShip);
-}
-
-Ship*	Ship::getNext( void ) const {
-	return this->_next;
-}
-
-void	Ship::setNext( Ship* s ) {
-	this->_next = s;
-}
-
-Ship*	Ship::getPrev( void ) const {
-	return this->_prev;
-}
-
-void	Ship::setPrev( Ship* s ) {
-	this->_prev = s;
-}
-*/

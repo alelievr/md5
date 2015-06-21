@@ -16,18 +16,15 @@ Projectile::Projectile(int a0, int a1, int a2, int d, char a3) : Ship("Projectil
 	this->setDam(d);
 	this->moveTimer = INTER_MOVE_PROJECTILE;
 	this->speed = 0;
-//	std::cout << "Default constructor called" << std::endl;
 }
 
 Projectile::Projectile(Projectile const & src)
 {
 	*this = src;
-//	std::cout << "Copy constructor called" << std::endl;
 }
 
 Projectile::~Projectile(void)
 {
-//	std::cout << "Destructor called" << std::endl;
 	if (this->getPrev() != NULL)
 		this->getPrev()->setNext(this->getNext());
 	if (this->getNext() != NULL)
@@ -36,8 +33,6 @@ Projectile::~Projectile(void)
 
 Projectile &	Projectile::operator=(Projectile const & src)
 {
-//	std::cout << "Assignment operator called" << std::endl;
-
 	if (this != &src) {
 		this->setX(src.getX());
 		this->setY(src.getY());
@@ -65,7 +60,6 @@ void Projectile::append( Projectile* newProjectile ) {
 	if (this->getNext() == NULL) {
 		this->setNext(newProjectile);
 		this->getNext()->setPrev(this);
-//		std::cout << "Appened to list" << std::endl;
 	} else
 		this->getNext()->append(newProjectile);
 }

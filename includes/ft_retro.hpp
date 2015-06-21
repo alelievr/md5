@@ -6,7 +6,7 @@
 # define BIT_TEST(x, y) (((x & (1 << y)) == 0) ? 0 : 1)
 
 # define INTER_FIRE_ENEMY		4000000
-# define INTER_MOVE_ENEMY		2000000
+# define INTER_MOVE_ENEMY		800000
 # define INTER_MOVE_OBSTACLE	2000000
 # define INTER_MOVE_PROJECTILE	70000
 # define INTER_MOVE_PLAYER		20000

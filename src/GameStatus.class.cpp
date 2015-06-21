@@ -4,22 +4,14 @@
 GameStatus::GameStatus(PlayerShip a0, int a1, int a2) : _difficulty(a1), _speed(a2), player(a0)
 {
 	srand(time(NULL));
-//	std::cout << "Default constructor called" << std::endl;
 	this->_pause = true;
 	this->enemyList.setDisplay(false);
 	this->obstacleList.setDisplay(false);
 	this->projList.setDisplay(false);
 }
 
-/*GameStatus::GameStatus(GameStatus const & src)
-{
-	*this = src;
-	std::cout << "Copy constructor called" << std::endl;
-}*/
-
 GameStatus::~GameStatus(void)
 {
-//	std::cout << "Destructor called" << std::endl;
 }
 
 void	GameStatus::PauseGame(void) 
@@ -189,8 +181,6 @@ void		GameStatus::Update(void)
 
 GameStatus &	GameStatus::operator=(GameStatus const & src)
 {
-//	std::cout << "Assignment operator called" << std::endl;
-
 	if (this != &src) {
 		this->player = src.getShip();
 		this->_difficulty = src.getDifficulty();
