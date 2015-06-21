@@ -6,7 +6,7 @@
 /*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 00:54:20 by alelievr          #+#    #+#             */
-/*   Updated: 2015/06/21 02:18:09 by alelievr         ###   ########.fr       */
+/*   Updated: 2015/06/21 04:46:27 by alelievr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@ std::string		sgetl(std::string s)
 		exit(0);
 	}
 	return (s);
+}
+
+void	debug(std::String t)
+{
+	std::ofstream	f;
+	f.open("debug.txt", ios::app | ios::out | ios::in);
+	f << t;
+	f.close();
 }
 
 void	loop(GameStatus & gm)
