@@ -96,12 +96,14 @@ int		display( GameStatus& gs ) {
 	attron(A_BOLD);
 	tmpP = &gs.projList;
 	while ((tmpP = tmpP->getNext())) {
-		display_mask(gs, tmpP->getX(), tmpP->getY(), tmpP->getHeight(), tmpP->getMask());
+		display_mask(gs, tmpP->getX(), tmpP->getY(), tmpP->getHeight(), "|");
 	}
 	attroff(A_BOLD);
 	attroff(COLOR_PAIR(1));
 
 	display_mask(gs, gs.player.getX(), gs.player.getY(), gs.player.getHeight(), gs.player.getMask());
+
+	mvaddstr(0, 15, std::to_string(gs.getKey()).c_str());
 
 	refresh();
 	return (0);

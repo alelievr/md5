@@ -39,7 +39,7 @@ class		Ship
 		virtual void	move(void);
 		void			setMask(std::string mask);
 		std::string		getMask(void) const;
-		void			nextPosition(void);
+		virtual void	nextPosition(void);
 
 		std::string	getName(void) const;
 		void	setName(std::string tmp);

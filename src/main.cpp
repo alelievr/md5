@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/06/20 00:54:20 by alelievr          #+#    #+#             */
-/*   Updated: 2015/06/21 11:04:08 by blemee           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "ft_retro.hpp"
 #include <chrono>
 #include <unistd.h>
@@ -24,7 +12,26 @@ std::string		sgetl( std::string s ) {
 	return (s);
 }
 
+void		genRandomTruc(GameStatus & gs)
+{
+	static unsigned long ObstacleTimer = 0;
+	static unsigned long EnemyTimer = 0;
+
+/*	if (clock() >= ObstacleTimer)
+	{
+		gs.obstacleList.append(new Obstacle(rand() % 80, 40 + rand() % 20));
+		ObstacleTimer = clock() + INTER_OBSTACLE_APEAR;
+	}*/
+	if (clock() >= EnemyTimer)
+	{
+		gs.enemyList.append(new EnemyShip("Nyancat", rand() % 80, 40 + rand() % 15, 20 + rand() % 21, 45));
+		EnemyTimer = clock() + INTER_ENEMY_APEAR;
+	}
+	(void)ObstacleTimer;
+}
+
 static int	loop( GameStatus & gs ) {
+	genRandomTruc(gs);
 	get_key(gs);
 	if (gs.getKey() == KEY_RESIZE) {
 		resize(gs);
@@ -35,6 +42,11 @@ static int	loop( GameStatus & gs ) {
 		return (-1);
 	}
 
+	if (clock() >= BOSS_TICK_APEAR)
+	{
+		//olol
+	}
+	gs.Update();
 	gs.Colision();
 	display(gs);
 	return (0);
@@ -58,8 +70,8 @@ int		main(void)
 
 //	gs.EndGame();
 //	gs.PauseGame();
-//	gs.obstacleList.append(new Obstacle(1, 2));
-//	gs.obstacleList.append(new Obstacle(2, 2));
+	gs.obstacleList.append(new Obstacle(1, 2));
+	gs.obstacleList.append(new Obstacle(2, 2));
 //	gs.projList.append(new Projectile(10, 8, 1, '|'));
 	gs.enemyList.append(new EnemyShip("Nyan", 10, 20, 42, 42));
 

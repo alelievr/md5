@@ -32,7 +32,7 @@ DYNLIB	 	= fmod/lib/libfmod.dylib fmod/lib/libfmodL.dylib
 NAME		=	ft_retro
 
 #	Compiler
-CFLAGS		=	-Werror -Wall -Wextra -g
+CFLAGS		=	-Werror -Wall -Wextra -g3
 CC			=	clang++
 
 #	Optimization

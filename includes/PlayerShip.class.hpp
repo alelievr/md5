@@ -1,6 +1,7 @@
 #ifndef PLAYERSHIP_HPP
 # define PLAYERSHIP_HPP
 # include "Ship.class.hpp"
+# include "Projectile.class.hpp"
 
 class		PlayerShip : public Ship
 {
@@ -19,6 +20,8 @@ class		PlayerShip : public Ship
 			ESC = 31
 		};
 		int		keys;
+		unsigned long	fireTimer;
+		unsigned long	moveTimer;
 
 		PlayerShip(void);
 		PlayerShip(std::string name, int x, int y, int hp, int maxhp);

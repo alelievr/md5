@@ -13,6 +13,8 @@ class	Obstacle : public Ship
 		Obstacle(int x, int y);
 		virtual ~Obstacle(void);
 
+		Obstacle &	operator=(Obstacle const & src);
+
 		Obstacle *	next;
 		Obstacle *	prev;
 
