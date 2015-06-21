@@ -6,7 +6,7 @@
 /*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 17:37:20 by alelievr          #+#    #+#             */
-/*   Updated: 2015/06/20 19:22:49 by alelievr         ###   ########.fr       */
+/*   Updated: 2015/06/21 03:05:17 by blemee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ FMOD::Sound *	getSoundData(FMOD::Sound *sound, int i)
 
 void			fmod_exit(void)
 {
-	std::cout << "Failed to play mp3" << std::endl;
+//	std::cout << "Failed to play mp3" << std::endl;
 	exit(0);
 }
 

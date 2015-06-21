@@ -6,7 +6,7 @@
 #    By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/04/04 19:22:36 by alelievr          #+#    #+#              #
-#    Updated: 2015/06/20 18:02:48 by alelievr         ###   ########.fr        #
+#    Updated: 2015/06/21 01:43:15 by blemee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,8 @@ SRC			=	EnemyShip.class.cpp		\
 				Ship.class.cpp			\
 				Projectile.class.cpp	\
 				main.cpp				\
+				get_key.cpp				\
+				display.cpp				\
 
 #	Objects
 OBJDIR		=	obj
@@ -32,7 +34,7 @@ INCDIR		=	includes/ ~/lib/
 
 #	Libraries
 LIBDIR		=	
-LIBS		=	
+LIBS		=	ncurses
 
 #	Output
 NAME		=	a.out

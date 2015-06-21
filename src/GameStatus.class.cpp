@@ -1,9 +1,8 @@
 #include "GameStatus.class.hpp"
 
-
 GameStatus::GameStatus(PlayerShip a0, int a1, int a2) : _difficulty(a1), _speed(a2), player(a0)
 {
-	std::cout << "Default constructor called" << std::endl;
+//	std::cout << "Default constructor called" << std::endl;
 	this->_pause = true;
 	this->enemyList.setDisplay(false);
 	this->obstacleList.setDisplay(false);
@@ -18,7 +17,7 @@ GameStatus::GameStatus(PlayerShip a0, int a1, int a2) : _difficulty(a1), _speed(
 
 GameStatus::~GameStatus(void)
 {
-	std::cout << "Destructor called" << std::endl;
+//	std::cout << "Destructor called" << std::endl;
 }
 
 void	GameStatus::PauseGame(void) 
@@ -63,7 +62,7 @@ void	GameStatus::Colision(void)
 
 GameStatus &	GameStatus::operator=(GameStatus const & src)
 {
-	std::cout << "Assignment operator called" << std::endl;
+//	std::cout << "Assignment operator called" << std::endl;
 
 	if (this != &src) {
 		this->player = src.getShip();

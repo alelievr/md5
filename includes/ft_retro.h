@@ -10,13 +10,18 @@
 
 # include <iostream>
 # include <string>
+# include <unistd.h>
+# include <ncurses.h>
+# include <sys/ioctl.h>
 # include "Ship.class.hpp"
+# include "GameStatus.class.hpp"
 # include "PlayerShip.class.hpp"
 # include "EnemyShip.class.hpp"
 # include "Obstacle.class.hpp"
 # include "Projectile.class.hpp"
-# include "GameStatus.class.hpp"
 
 std::string		sgetl(std::string s);
+int		get_key( void );
+int		display(GameStatus& );
 
 #endif

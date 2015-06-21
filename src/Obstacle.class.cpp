@@ -1,4 +1,5 @@
-#include "ft_retro.h"
+#include "Obstacle.class.hpp"
+#include "Ship.class.hpp"
 
 Obstacle::Obstacle(void)
 {
@@ -10,12 +11,12 @@ Obstacle::Obstacle(int x, int y) : Ship("Asteroid", x, y, 500000, 500000)
 {
 	this->setNext(NULL);
 	this->setPrev(NULL);
-	std::cout << "new ostacle in " << x << "/" << y << std::endl;
+//	std::cout << "new ostacle in " << x << "/" << y << std::endl;
 }
 
 Obstacle::~Obstacle(void)
 {
-	std::cout << "Destructed Asteroid" << std::endl;
+//	std::cout << "Destructed Asteroid" << std::endl;
 	if (this->getPrev() != NULL)
 		this->setPrev(this->getNext());
 	if (this->getNext() != NULL)
@@ -32,7 +33,7 @@ void Obstacle::append( Obstacle* newObstacle ) {
 	if (this->getNext() == NULL) {
 		this->setNext(newObstacle);
 		this->getNext()->setPrev(this);
-		std::cout << "Appened to list" << std::endl;
+//		std::cout << "Appened to list" << std::endl;
 	} else
 		this->getNext()->append(newObstacle);
 }

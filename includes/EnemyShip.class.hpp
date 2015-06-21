@@ -1,5 +1,6 @@
 #ifndef ENEMYSHIP_HPP
 # define ENEMYSHIP_HPP
+# include "Ship.class.hpp"
 
 class		EnemyShip : public Ship
 {
