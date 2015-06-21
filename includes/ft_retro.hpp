@@ -67,7 +67,6 @@
 # include "Projectile.class.hpp"
 
 std::string		sgetl(std::string s);
-<<<<<<< HEAD
 int		get_key( GameStatus& );
 int		display( GameStatus& );
 //int		menu(GameStatus& gs);

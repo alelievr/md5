@@ -21,7 +21,6 @@ void	debug(std::string t)
 	file.close();
 }
 
-<<<<<<< HEAD
 static int	loop( GameStatus & gs ) {
 	get_key(gs);
 	if (gs.getKey() == KEY_RESIZE) {
