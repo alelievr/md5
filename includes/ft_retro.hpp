@@ -62,8 +62,11 @@
 # include "Projectile.class.hpp"
 
 std::string		sgetl(std::string s);
-int		get_key( void );
-int		display(GameStatus& );
+int		get_key( GameStatus& );
+int		display( GameStatus& );
+//int		menu(GameStatus& gs);
+//int		get_choice(GameStatus& gs, int li, int co, ...);
+void	resize( GameStatus& );
 
 /* Sound functions: */
 void		loadSounds(void);

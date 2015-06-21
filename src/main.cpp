@@ -5,23 +5,26 @@
 
 std::string		sgetl( std::string s ) {
 	if (getline(std::cin, s) == 0) {
-//		std::cout << "exit" << std::endl;
+		std::cout << "exit" << std::endl;
 		exit(0);
 	}
 	return (s);
 }
 
-void	loop( GameStatus & gs ) {
-	sleep(1);
-	get_key();
-	/*if (datas->key == KEY_RESIZE)
-	{
-		resize_2048(datas);
-		display_2048(datas);
-		display_2048(datas);
-	}*/
-	display(gs);
+static int	loop( GameStatus & gs ) {
+	get_key(gs);
+	if (gs.getKey() == KEY_RESIZE) {
+		resize(gs);
+/*		display(datas);
+		display(datas);*/
+	}
+	if (gs.getKey() == 033 && getch() < 0) {
+		return (-1);
+	}
+
 	gs.Colision();
+	display(gs);
+	return (0);
 }
 
 int		main(void)
@@ -35,7 +38,7 @@ int		main(void)
 	noecho();
 	nodelay(stdscr, TRUE);
 	curs_set(0);
-	   scrollok(stdscr, TRUE);
+	resize(gs);
 
 //	gs.EndGame();
 //	gs.PauseGame();
@@ -44,6 +47,8 @@ int		main(void)
 	gs.projList.append(new Projectile(10, 8, 1, '|'));
 	gs.enemyList.append(new EnemyShip("Nyan", 10, 15, 42, 42));
 
-	while (42)
-		loop(gs);
+	while (!loop(gs));
+	scrollok(stdscr, TRUE);
+	curs_set(1);
+	endwin();
 }

@@ -9,9 +9,12 @@
 
 class		GameStatus {
 	private:
-		int	_difficulty;
-		int	_speed;
+		int		_difficulty;
+		int		_speed;
 		bool	_pause;
+		int		_key;
+		int		_width;
+		int		_height;
 
 
 	public:
@@ -34,14 +37,23 @@ class		GameStatus {
 		PlayerShip	getShip(void) const;
 		void	setShip(PlayerShip tmp);
 		
-		int	getDifficulty(void) const;
+		int		getDifficulty(void) const;
 		void	setDifficulty(int tmp);
 		
-		int	getSpeed(void) const;
+		int		getSpeed(void) const;
 		void	setSpeed(int tmp);
 		
 		bool	getPause(void) const;
 		void	setPause(bool tmp);
+		
+		int		getKey(void) const;
+		void	setKey(int tmp);
+		
+		int		getWidth(void) const;
+		void	setWidth(int tmp);
+		
+		int		getHeight(void) const;
+		void	setHeight(int tmp);
 };
 
 std::ostream &	operator<<(std::ostream & o, GameStatus const & r);

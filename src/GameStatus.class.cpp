@@ -178,6 +178,36 @@ void	GameStatus::setSpeed(int tmp)
 	this->_speed = tmp;
 }
 
+int	GameStatus::getKey(void) const
+{
+	return (this->_key);
+}
+
+void	GameStatus::setKey(int tmp)
+{
+	this->_key = tmp;
+}
+
+int	GameStatus::getWidth(void) const
+{
+	return (this->_width);
+}
+
+void	GameStatus::setWidth(int tmp)
+{
+	this->_width = tmp;
+}
+
+int	GameStatus::getHeight(void) const
+{
+	return (this->_height);
+}
+
+void	GameStatus::setHeight(int tmp)
+{
+	this->_height = tmp;
+}
+
 bool	GameStatus::getPause(void) const
 {
 	return (this->_pause);

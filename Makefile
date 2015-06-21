@@ -14,6 +14,7 @@ SRC			=	EnemyShip.class.cpp		\
 				main.cpp				\
 				get_key.cpp				\
 				display.cpp				\
+				sig_resize.cpp			\
 
 #	Objects
 OBJDIR		=	obj
