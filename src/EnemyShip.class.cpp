@@ -1,4 +1,5 @@
 #include "EnemyShip.class.hpp"
+#include "ft_retro.hpp"
 
 EnemyShip::EnemyShip(void) : Ship("Enemy", 0, 0, 0, 0)
 {
@@ -7,8 +8,10 @@ EnemyShip::EnemyShip(void) : Ship("Enemy", 0, 0, 0, 0)
 
 EnemyShip::EnemyShip(std::string name, int x, int y, int hp, int maxhp) : Ship(name, x, y, hp, maxhp)
 {
+	static std::string m[] = MASK_ENEMYSHIP;
 	this->setNext(NULL);
 	this->setPrev(NULL);
+	this->setMask(m[rand() % 4]);
 	this->direction = -1;
 //	std::cout << "Enemy ship created on " << x << "/" << y << std::endl;
 }

@@ -1,16 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/06/20 00:54:20 by alelievr          #+#    #+#             */
-/*   Updated: 2015/06/21 03:29:11 by blemee           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "ft_retro.h"
+#include "ft_retro.hpp"
 #include <chrono>
 #include <unistd.h>
 #include <ctime>
@@ -38,6 +26,7 @@ void	loop( GameStatus & gs ) {
 	gm.obstacleList.append(new Obstacle(1, 2));
 	gm.obstacleList.append(new Obstacle(2, 2));
 	gm.obstacleList.append(new Obstacle(3, 2));
+	gm.Colision();
 	tmp = gm.obstacleList.getNext();
 	while (tmp)
 	{
@@ -55,7 +44,9 @@ void	loop( GameStatus & gs ) {
 
 int		main(void)
 {
-	PlayerShip	ps("player", 1, 1, 10, 10);
+	playBackground();
+	loadSounds();
+	PlayerShip	ps("player", 2, 2, 10, 10);
 	GameStatus	gs(ps, 0, 1);
 	initscr();
 	raw();
@@ -63,6 +54,8 @@ int		main(void)
 	nodelay(stdscr, TRUE);
 	curs_set(0);
 	   scrollok(stdscr, TRUE);
+//	gs.EndGame();
+//	gs.PauseGame();
 	while (42)
 		loop(gs);
 }

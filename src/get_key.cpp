@@ -6,11 +6,11 @@
 /*   By: blemee <blemee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 23:50:09 by blemee            #+#    #+#             */
-/*   Updated: 2015/06/21 03:05:03 by blemee           ###   ########.fr       */
+/*   Updated: 2015/06/21 04:04:22 by blemee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_retro.h"
+#include "ft_retro.hpp"
 
 int		kbhit( void )
 {

@@ -6,11 +6,11 @@
 /*   By: blemee <blemee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/21 01:35:41 by blemee            #+#    #+#             */
-/*   Updated: 2015/06/21 03:45:55 by blemee           ###   ########.fr       */
+/*   Updated: 2015/06/21 04:04:43 by blemee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_retro.h"
+#include "ft_retro.hpp"
 
 static void	display_mask(int x, int y, std::string mask) {
 	mvaddstr(y, x, mask.c_str());

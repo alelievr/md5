@@ -1,8 +1,10 @@
 #include "Ship.class.hpp"
 #include "PlayerShip.class.hpp"
+#include "ft_retro.hpp"
 
 PlayerShip::PlayerShip(std::string name, int x, int y, int  hp , int maxhp) : Ship(name, x, y, hp, maxhp)
 {
+	this->setMask(MASK_SHIP_LOW);
 	this->direction = 1;
 //	std::cout << "playership constructed" << std::endl;
 }

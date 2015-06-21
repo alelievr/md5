@@ -1,9 +1,13 @@
 #include "Obstacle.class.hpp"
 #include "Ship.class.hpp"
+#include "ft_retro.hpp"
 
 Obstacle::Obstacle(void)
 {
+	static	std::string m[] = MASK_OBSTACLE;
+
 	this->setDisplay(false);
+	this->setMask(m[rand() % 4]);
 	Obstacle(0, 0);
 }
 

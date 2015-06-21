@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/04/04 19:22:36 by alelievr          #+#    #+#              #
-#    Updated: 2015/06/21 01:43:15 by blemee           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 #################
 ##  VARIABLES  ##
 #################
@@ -22,6 +10,7 @@ SRC			=	EnemyShip.class.cpp		\
 				PlayerShip.class.cpp	\
 				Ship.class.cpp			\
 				Projectile.class.cpp	\
+				loadSounds.cpp			\
 				main.cpp				\
 				get_key.cpp				\
 				display.cpp				\
@@ -30,14 +19,16 @@ SRC			=	EnemyShip.class.cpp		\
 OBJDIR		=	obj
 
 #	Includes
-INCDIR		=	includes/ ~/lib/
+INCDIR		=	includes/ fmod/inc
 
 #	Libraries
 LIBDIR		=	
 LIBS		=	ncurses
 
+DYNLIB	 	= fmod/lib/libfmod.dylib fmod/lib/libfmodL.dylib
+
 #	Output
-NAME		=	a.out
+NAME		=	ft_retro
 
 #	Compiler
 CFLAGS		=	-Werror -Wall -Wextra -g
@@ -105,10 +96,9 @@ all: $(NAME)
 
 #	Linking
 $(NAME): $(OBJ)
-	export DYLD_LIBRARY_PATH=~/lib/:$DYLD_LIBRARY_PATH
 	@$(call disp_title,Linking,$(LINK_COLOR_T));
 	@$(call exec_color, "\033[38;5;$(LINK_COLOR_T)m➤ \033[38;5;$(LINK_COLOR)m",\
-		$(CC), $(CFLAGS), $(OPTFLAGS), $(VLIBDIR), $(VLIB), -o, $(NAME), $(OBJ))
+		$(CC), $(CFLAGS), $(OPTFLAGS), $(VLIBDIR), $(VLIB), -o, $(NAME), $(OBJ), $(DYNLIB))
 
 #	Objects compilation
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
