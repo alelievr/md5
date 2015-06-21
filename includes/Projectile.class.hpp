@@ -12,9 +12,9 @@ class		Projectile : public Ship
 
 	public:
 		Projectile(void);
-		Projectile(int a0, int a1, int a2, char a3);
+		Projectile(int a0, int a1, int a2, int d, char a3);
 		Projectile(const Projectile&);
-		~Projectile(void);
+		virtual ~Projectile(void);
 
 		Projectile &	operator=(Projectile const & src);
 
@@ -22,6 +22,7 @@ class		Projectile : public Ship
 		int		speed;
 		Projectile*   getNext(void) const;
 		void    setNext(Projectile*);
+		void	move(void);
 
 		Projectile*   getPrev(void) const;
 		void    setPrev(Projectile*);

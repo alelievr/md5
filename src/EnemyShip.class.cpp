@@ -13,34 +13,35 @@ EnemyShip::EnemyShip(std::string name, int x, int y, int hp, int maxhp) : Ship(n
 	this->setPrev(NULL);
 	this->setMask(m[rand() % 4]);
 	this->direction = -1;
+	this->setDam(100);
 	this->fireTimer = INTER_FIRE_ENEMY;
 	this->moveTimer = INTER_MOVE_ENEMY;
-//	std::cout << "Enemy ship created on " << x << "/" << y << std::endl;
+	std::cout << "Enemy ship created with " << this->getDam() << std::endl;
 }
 
 EnemyShip::~EnemyShip(void)
 {
 	std::cout << "Enemy ship destroyed" << std::endl;
 	if (this->getPrev() != NULL)
-		this->setPrev(this->getNext());
+		this->getPrev()->setNext(this->getNext());
 	if (this->getNext() != NULL)
-		this->setNext(this->getNext());
+		this->getNext()->setPrev(this->getPrev());
 }
 
 void	EnemyShip::fire(void)
 {
-
+	this->fireTimer = clock() + INTER_FIRE_ENEMY + (rand() % 10000);
 }
 
 void	EnemyShip::die(void)
 {
-
+	delete this;
 }
 
-void	EnemyShip::move(int x, int y)
+void	EnemyShip::move(void)
 {
-	(void)x;
-	(void)y;
+	this->nextPosition();
+	this->moveTimer = clock() + INTER_MOVE_ENEMY + (rand() % 10000);
 //	std::cout << "EnemyShip moves at " << x << "/" << y << std::endl;
 }
 void EnemyShip::append( EnemyShip* newEnemyShip ) {

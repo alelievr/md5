@@ -1,4 +1,5 @@
 #include "GameStatus.class.hpp"
+#include "ft_retro.hpp"
 
 GameStatus::GameStatus(PlayerShip a0, int a1, int a2) : _difficulty(a1), _speed(a2), player(a0)
 {
@@ -53,10 +54,13 @@ void	GameStatus::Colision(void)
 	Projectile *	tmpP;
 	EnemyShip *		tmpE;
 	Obstacle *		tmpO;
+	Projectile *	tmpD;
+	bool			toDelete;
 
 	tmpP = this->projList.getNext();
 	while (tmpP)
 	{
+		toDelete = false;
 		// Obstacle collisions:
 		tmpO = this->obstacleList.getNext();
 		while (tmpO)
@@ -67,6 +71,7 @@ void	GameStatus::Colision(void)
 						tmpP->getY() <= tmpO->getY() + tmpO->getHeight())
 				{
 					tmpO->takeDam(tmpP->getDam());
+					toDelete = true;
 			//		debug("obstacle colision !\n");
 				}
 			tmpO = tmpO->getNext();
@@ -76,27 +81,32 @@ void	GameStatus::Colision(void)
 		// EnemyShip colision:
 		while (tmpE)
 		{
-			if (tmpP->getX() >= tmpE->getX()
+			if (tmpP->getX() >= tmpE->getX() && !toDelete
 					&& tmpP->getX() <= tmpE->getX() + tmpE->getWidth())
 				if (tmpP->getY() >= tmpE->getY()
 						&& tmpP->getY() <= tmpE->getY() + tmpE->getHeight())
 				{
 					tmpE->takeDam(tmpP->getDam());
+					toDelete = true;
 			//		debug("enemy colision !\n");
 				}
 			tmpE = tmpE->next;
 		}
 
 		//PlayerShip colision:
-		if (tmpP->getX() >= this->player.getX()
+		if (tmpP->getX() >= this->player.getX() && !toDelete
 				&& tmpP->getX() <= this->player.getX() + this->player.getWidth())
 			if (tmpP->getY() >= this->player.getY()
 					&& tmpP->getY() <= this->player.getY() + this->player.getHeight())
-			{
-				this->player.takeDam(tmpP->getDam());
-			//	debug("playerShip colision !\n");
-			}
+				{
+					this->player.takeDam(tmpP->getDam());
+					toDelete = true;
+				//	debug("playerShip colision !\n");
+				}
+		tmpD = tmpP;
 		tmpP = tmpP->getNext();
+		if (toDelete)
+			delete tmpD;
 	}
 
 	// Obstacle collisions with playerShip:
@@ -141,19 +151,23 @@ void		GameStatus::Update(void)
 	tmpP = &this->projList;
 	while ((tmpP = tmpP->getNext()))
 		if (clock() >= tmpP->moveTimer)
-			tmpP->nextPosition();
+			tmpP->move();
 	tmpE = &this->enemyList;
 	while ((tmpE = tmpE->getNext()))
 	{
 		if (clock() >= tmpE->moveTimer)
-			tmpE->nextPosition();
+			tmpE->move();
 		if (clock() >= tmpE->fireTimer)
-			this->projList.append(new Projectile(tmpE->getX(), tmpE->getY(), tmpE->direction, '|'));
+		{
+			this->projList.append(new Projectile(tmpE->getX(),
+						tmpE->getY() + tmpE->direction, tmpE->direction, tmpE->getDam(), '|'));
+			tmpE->fire();
+		}
 	}
 	tmpO = &this->obstacleList;
 	while ((tmpO = tmpO->getNext()))
 		if (clock() >= tmpO->moveTimer)
-			tmpO->nextPosition();
+			tmpO->move();
 }
 
 GameStatus &	GameStatus::operator=(GameStatus const & src)

@@ -11,6 +11,7 @@ Ship::Ship(std::string a0, int a1, int a2, int a3, int a4) : _name(a0), _x(a1), 
 	//this->setNext(NULL);
 	//this->setPrev(NULL);
 	this->direction = 0;
+	this->_damage = 0;
 	this->_index = genIndex();
 	this->setDisplay(true);
 	//std::cout << "Default constructor called" << std::endl;
@@ -42,6 +43,8 @@ void		Ship::setDam( int d ) {
 
 void	Ship::takeDam( int d ) {
 	this->_HP -= d;
+	if (this->_HP < 0)
+		this->die();
 }
 
 void	Ship::fire(void)
@@ -54,15 +57,14 @@ void	Ship::die(void)
 	
 }
 
-void	Ship::move(int x, int y)
+void	Ship::move(void)
 {
-	this->_x = x;
-	this->_y = y;
+
 }
 
 void		Ship::nextPosition(void)
 {
-	this->_x += this->direction;
+	this->_y += this->direction;
 }
 
 Ship &	Ship::operator=(Ship const & src)

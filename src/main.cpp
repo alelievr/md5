@@ -6,7 +6,7 @@
 /*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 00:54:20 by alelievr          #+#    #+#             */
-/*   Updated: 2015/06/21 05:45:42 by alelievr         ###   ########.fr       */
+/*   Updated: 2015/06/21 08:07:45 by alelievr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ int		main(void)
 
 //	gs.EndGame();
 //	gs.PauseGame();
-	gs.obstacleList.append(new Obstacle(1, 2));
-	gs.obstacleList.append(new Obstacle(2, 2));
-	gs.projList.append(new Projectile(10, 8, 1, '|'));
-	gs.enemyList.append(new EnemyShip("Nyan", 10, 15, 42, 42));
+//	gs.obstacleList.append(new Obstacle(1, 2));
+//	gs.obstacleList.append(new Obstacle(2, 2));
+//	gs.projList.append(new Projectile(10, 8, 1, '|'));
+	gs.enemyList.append(new EnemyShip("Nyan", 10, 20, 42, 42));
 
 	while (42)
 		loop(gs);

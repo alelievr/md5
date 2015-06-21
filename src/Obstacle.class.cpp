@@ -24,16 +24,20 @@ Obstacle::~Obstacle(void)
 {
 //	std::cout << "Destructed Asteroid" << std::endl;
 	if (this->getPrev() != NULL)
-		this->setPrev(this->getNext());
+		this->getPrev()->setNext(this->getNext());
 	if (this->getNext() != NULL)
-		this->setNext(this->getNext());
+		this->getNext()->setPrev(this->getPrev());
 }
 
 void		Obstacle::fire(void) { }
 
 void		Obstacle::die(void) { }
 
-void		Obstacle::move(int x, int y) { (void)x; (void)y; }
+void		Obstacle::move(void)
+{
+	this->nextPosition();
+	this->moveTimer = clock() + INTER_MOVE_OBSTACLE + (rand() % 10000);
+}
 
 void Obstacle::append( Obstacle* newObstacle ) {
 	if (this->getNext() == NULL) {

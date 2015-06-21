@@ -7,12 +7,13 @@ Projectile::Projectile(void) : Ship("Projectile", 0, 0, 50000, 50000)
 	this->direction = 1;
 }
 
-Projectile::Projectile(int a0, int a1, int a2, char a3) : Ship("Projectile", a0, a1, 500000, 500000)
+Projectile::Projectile(int a0, int a1, int a2, int d, char a3) : Ship("Projectile", a0, a1, 500000, 500000)
 {
 	this->setNext(NULL);
 	this->setPrev(NULL);
 	this->direction = a2;
 	this->c = a3;
+	this->setDam(d);
 	this->moveTimer = INTER_MOVE_PROJECTILE;
 	this->speed = 0;
 //	std::cout << "Default constructor called" << std::endl;
@@ -28,9 +29,9 @@ Projectile::~Projectile(void)
 {
 //	std::cout << "Destructor called" << std::endl;
 	if (this->getPrev() != NULL)
-		this->setPrev(this->getNext());
+		this->getPrev()->setNext(this->getNext());
 	if (this->getNext() != NULL)
-		this->setNext(this->getNext());
+		this->getNext()->setPrev(this->getPrev());
 }
 
 Projectile &	Projectile::operator=(Projectile const & src)
@@ -45,6 +46,12 @@ Projectile &	Projectile::operator=(Projectile const & src)
 		this->c = src.c;
 	}
 	return (*this);
+}
+
+void		Projectile::move(void)
+{
+	this->nextPosition();
+	this->moveTimer = clock() + INTER_MOVE_PROJECTILE + (rand() % 10000);
 }
 
 std::ostream &	operator<<(std::ostream & o, Projectile const & r)

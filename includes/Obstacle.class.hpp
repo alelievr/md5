@@ -11,14 +11,14 @@ class	Obstacle : public Ship
 	public:
 		Obstacle(void);
 		Obstacle(int x, int y);
-		~Obstacle(void);
+		virtual ~Obstacle(void);
 
 		Obstacle *	next;
 		Obstacle *	prev;
 
 		void		fire(void);
 		void		die(void);
-		void		move(int x, int y);
+		void		move(void);
 
 		Obstacle*   getNext(void) const;
 		void    setNext(Obstacle*);

@@ -25,7 +25,7 @@ class		PlayerShip : public Ship
 
 		void		fire(void);
 		void		die(void);
-		void		move(int x, int y);
+		void		move(void);
 		int			getLife(void);
 		bool		isAlive(void);
 };

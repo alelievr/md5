@@ -18,7 +18,11 @@ int			PlayerShip::getLife(void)
 
 void		PlayerShip::fire(void)
 {
-	
+	this->fireTimer = clock() + INTER_FIRE_ENEMY + (rand() % 10000);
+}
+
+void		PlayerShip::move(void)
+{
 }
 
 void		PlayerShip::die(void)
@@ -31,13 +35,6 @@ void		PlayerShip::die(void)
 bool		PlayerShip::isAlive(void)
 {
 	return (!this->_isDead);
-}
-
-void		PlayerShip::move(int x, int y)
-{
-	this->setX(x);
-	this->setY(y);
-//	std::cout << "Playership moved at " << x << "/" << y << std::endl;
 }
 
 PlayerShip::~PlayerShip(void)

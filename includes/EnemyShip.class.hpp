@@ -11,14 +11,14 @@ class		EnemyShip : public Ship
 	public:
 		EnemyShip(void);
 		EnemyShip(std::string name, int x, int y, int hp, int mhp);
-		~EnemyShip(void);
+		virtual ~EnemyShip(void);
 
 		EnemyShip *	next;
 		EnemyShip *	prev;
 
 		void		fire(void);
 		void		die(void);
-		void		move(int x, int y);
+		void		move(void);
 		EnemyShip*   getNext(void) const;
 		void    setNext(EnemyShip*);
 
