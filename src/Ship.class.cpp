@@ -56,7 +56,8 @@ void	Ship::die(void)
 
 void	Ship::move(int x, int y)
 {
-	std::cout << "Ship move at " << x << "/" << y << std::endl;
+	this->_x = x;
+	this->_y = y;
 }
 
 
