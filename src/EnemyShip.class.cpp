@@ -16,12 +16,10 @@ EnemyShip::EnemyShip(std::string name, int x, int y, int hp, int maxhp) : Ship(n
 	this->setDam(100);
 	this->fireTimer = INTER_FIRE_ENEMY;
 	this->moveTimer = INTER_MOVE_ENEMY;
-	std::cout << "Enemy ship created with " << this->getDam() << std::endl;
 }
 
 EnemyShip::~EnemyShip(void)
 {
-	std::cout << "Enemy ship destroyed" << std::endl;
 	if (this->getPrev() != NULL)
 		this->getPrev()->setNext(this->getNext());
 	if (this->getNext() != NULL)
@@ -44,13 +42,11 @@ void	EnemyShip::move(void)
 {
 	this->nextPosition();
 	this->moveTimer = clock() + INTER_MOVE_ENEMY + (rand() % 10000);
-//	std::cout << "EnemyShip moves at " << x << "/" << y << std::endl;
 }
 void EnemyShip::append( EnemyShip* newEnemyShip ) {
 	if (this->getNext() == NULL) {
 		this->setNext(newEnemyShip);
 		this->getNext()->setPrev(this);
-//		std::cout << "Appened to list" << std::endl;
 	} else
 		this->getNext()->append(newEnemyShip);
 }

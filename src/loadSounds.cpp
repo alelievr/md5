@@ -52,6 +52,7 @@ void			playSound(int index)
 		return ;
 	if (Syst->playSound(s, NULL, false, &Chan) != FMOD_OK)
 		fmod_exit();
+	Syst->update();
 }
 
 void			playBackground(void)
@@ -71,6 +72,7 @@ void			playBackground(void)
 		fmod_exit();
 	if (Syst->playSound(s, NULL, false, &Chan) != FMOD_OK)
 		fmod_exit();
+	Syst->update();
 }
 /*
 

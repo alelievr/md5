@@ -15,8 +15,7 @@ PlayerShip::PlayerShip(std::string name, int x, int y, int  hp , int maxhp) : Sh
 	this->_isDead = false;
 	this->moveTimer = 0;
 	this->fireTimer = 0;
-	this->setDam(100);
-	//std::cout << "playership constructed : " << std::endl<< this->data << std::endl;
+	this->setDam(10);
 }
 
 PlayerShip &	PlayerShip::operator=(PlayerShip const & src)
@@ -87,5 +86,4 @@ bool		PlayerShip::isAlive(void) const
 
 PlayerShip::~PlayerShip(void)
 {
-//	std::cout << "PlayerShip destroyed !" << std::endl;
 }

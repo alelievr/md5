@@ -70,8 +70,8 @@ int		main(void)
 
 //	gs.EndGame();
 //	gs.PauseGame();
-	gs.obstacleList.append(new Obstacle(1, 2));
-	gs.obstacleList.append(new Obstacle(2, 2));
+//	gs.obstacleList.append(new Obstacle(1, 2));
+//	gs.obstacleList.append(new Obstacle(2, 2));
 //	gs.projList.append(new Projectile(10, 8, 1, '|'));
 	gs.enemyList.append(new EnemyShip("Nyan", 10, 20, 42, 42));
 
