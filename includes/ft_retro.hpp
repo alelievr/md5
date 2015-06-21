@@ -9,6 +9,8 @@
 # define INTER_MOVE_ENEMY		5000000
 # define INTER_MOVE_OBSTACLE	2000000
 # define INTER_MOVE_PROJECTILE	500000
+# define INTER_MOVE_PLAYER		500000
+# define INTER_FIRE_PLASYER		700000
 
 # define SOUND_LASER 0
 # define SOUND_EXPLOSION 1
@@ -67,8 +69,11 @@
 # include "Projectile.class.hpp"
 
 std::string		sgetl(std::string s);
-int				get_key( void );
-int				display(GameStatus& );
+int		get_key( GameStatus& );
+int		display( GameStatus& );
+//int		menu(GameStatus& gs);
+//int		get_choice(GameStatus& gs, int li, int co, ...);
+void	resize( GameStatus& );
 void			debug(std::string d);
 
 /* Sound functions: */

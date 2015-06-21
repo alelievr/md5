@@ -6,7 +6,7 @@
 /*   By: blemee <blemee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 23:50:09 by blemee            #+#    #+#             */
-/*   Updated: 2015/06/21 04:04:22 by blemee           ###   ########.fr       */
+/*   Updated: 2015/06/21 05:33:20 by blemee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,10 @@ int		kbhit( void )
 	}
 }
 
-int		get_key( void )
+int		get_key( GameStatus& gs )
 {
 	if (kbhit()) {
-	//	printw("Key pressed! It was: %d\n", getch());
-	//	refresh();
-	} else {
-	//	printw("No key pressed yet...\n");
-	//	refresh();
+		gs.setKey(getch());
 	}
 	return (0);
 }

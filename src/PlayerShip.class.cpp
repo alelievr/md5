@@ -2,6 +2,11 @@
 #include "PlayerShip.class.hpp"
 #include "ft_retro.hpp"
 
+PlayerShip::PlayerShip(void)
+{
+	PlayerShip("player", 10, 10, 10, 10);
+}
+
 PlayerShip::PlayerShip(std::string name, int x, int y, int  hp , int maxhp) : Ship(name, x, y, hp, maxhp)
 {
 	this->setMask(MASK_SHIP_LOW);
@@ -11,7 +16,29 @@ PlayerShip::PlayerShip(std::string name, int x, int y, int  hp , int maxhp) : Sh
 	//std::cout << "playership constructed : " << std::endl<< this->data << std::endl;
 }
 
-int			PlayerShip::getLife(void)
+PlayerShip &	PlayerShip::operator=(PlayerShip const & src)
+{
+	if (this != &src)
+	{
+		this->setName(src.getName());
+		this->setX(src.getX());
+		this->setY(src.getY());
+		this->setHP(src.getHP());
+		this->setMHP(src.getMHP());
+		this->setMask(src.getMask());
+		this->_life = src.getLife();
+		this->_isDead = !src.isAlive();
+		this->setDam(src.getDam());
+	}
+	return (*this);
+}
+
+PlayerShip::PlayerShip(PlayerShip const & src)
+{
+	*this = src;
+}
+
+int			PlayerShip::getLife(void) const
 {
 	return (this->_life);
 }
@@ -21,8 +48,11 @@ void		PlayerShip::fire(void)
 	this->fireTimer = clock() + INTER_FIRE_ENEMY + (rand() % 10000);
 }
 
-void		PlayerShip::move(void)
+void		PlayerShip::move(void) { }
+
+void		PlayerShip::move(int key)
 {
+	(void)key;
 }
 
 void		PlayerShip::die(void)
@@ -32,7 +62,7 @@ void		PlayerShip::die(void)
 		this->_isDead = true;
 }
 
-bool		PlayerShip::isAlive(void)
+bool		PlayerShip::isAlive(void) const
 {
 	return (!this->_isDead);
 }

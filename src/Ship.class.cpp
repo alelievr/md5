@@ -195,7 +195,7 @@ void	Ship::setMask(std::string m)
 	this->data = m;
 }
 
-std::string		Ship::getMask(void)
+std::string		Ship::getMask(void) const
 {
 	return (this->data);
 }
