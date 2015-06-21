@@ -1,6 +1,7 @@
 #ifndef PLAYERSHIP_HPP
 # define PLAYERSHIP_HPP
 # include "Ship.class.hpp"
+# include "Projectile.class.hpp"
 
 class		PlayerShip : public Ship
 {

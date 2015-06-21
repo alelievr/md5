@@ -52,6 +52,16 @@ void		PlayerShip::move(void) { }
 
 void		PlayerShip::move(int key)
 {
+	if (key == KEY_TOP)
+		this->setY(this->getY() + 1);
+	if (key == KEY_BOT)
+		this->setY(this->getY() - 1);
+	if (key == 68)
+		this->setX(this->getX() - 1);
+	if (key == 67)
+		this->setX(this->getX() + 1);
+	if (key == KEY_FIRE)
+		this->fire();
 	(void)key;
 }
 

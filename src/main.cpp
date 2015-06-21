@@ -6,7 +6,7 @@
 /*   By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/20 00:54:20 by alelievr          #+#    #+#             */
-/*   Updated: 2015/06/21 09:35:42 by alelievr         ###   ########.fr       */
+/*   Updated: 2015/06/21 09:56:39 by alelievr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static int	loop( GameStatus & gs ) {
 		return (-1);
 	}
 
+	gs.Update();
 	gs.Colision();
 	display(gs);
 	return (0);

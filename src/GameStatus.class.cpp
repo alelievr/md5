@@ -159,8 +159,7 @@ void		GameStatus::Update(void)
 			tmpE->move();
 		if (clock() >= tmpE->fireTimer)
 		{
-			this->projList.append(new Projectile(tmpE->getX(),
-						tmpE->getY() + tmpE->direction, tmpE->direction, tmpE->getDam(), '|'));
+			this->projList.append(new Projectile(tmpE->getX() + tmpE->getWidth() / 2, tmpE->getY() + tmpE->direction, tmpE->direction, tmpE->getDam(), '|'));
 			tmpE->fire();
 		}
 	}
@@ -169,7 +168,14 @@ void		GameStatus::Update(void)
 		if (clock() >= tmpO->moveTimer)
 			tmpO->move();
 	if (this->getKey())
+	{
 		this->player.move(this->getKey());
+		if (this->getKey() == 32)
+		{
+			this->projList.append(new Projectile(this->player.getX(), this->player.getY() + this->getHeight() + 5, this->player.direction, this->player.getDam(), '|'));
+		}
+		this->setKey(0);
+	}
 }
 
 GameStatus &	GameStatus::operator=(GameStatus const & src)

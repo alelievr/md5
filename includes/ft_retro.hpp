@@ -15,6 +15,12 @@
 # define SOUND_LASER 0
 # define SOUND_EXPLOSION 1
 
+# define KEY_LEFT	68
+# define KEY_RIGHT	67
+# define KEY_TOP	65
+# define KEY_BOT	66
+# define KEY_FIRE	32
+
 # define MASK_SHIP_LOW		"|   |\n" \
 							"|_^_|\n" \
 							" ^ ^ \n"
